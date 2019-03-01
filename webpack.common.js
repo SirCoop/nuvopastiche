@@ -20,15 +20,24 @@ const EnvironmentPluginConfig = new webpack.EnvironmentPlugin({...env});
 module.exports = {
   entry: `${__dirname}/src/index.js`,
   output: {
+<<<<<<< HEAD
     filename: 'nuvo_pastiche_bundle-[hash].js',
     path: path.resolve(__dirname, "../dist"),
+=======
+    filename: 'nuvopastiche_bundle-[hash].js',
+    path: path.resolve(__dirname, "./dist"),
+>>>>>>> de2bd61524703d340ab2bc092710eef51acd212d
     publicPath: '/'
   },
   plugins: [
     HtmlwebpackPluginConfig,
     CleanwebpackPluginConfig,
     EnvironmentPluginConfig,
+<<<<<<< HEAD
     new ExtractPlugin('nuvo_pastiche_bundle-[hash].css'),    
+=======
+    new ExtractPlugin('nuvopastiche_bundle-[hash].css'),    
+>>>>>>> de2bd61524703d340ab2bc092710eef51acd212d
   ],
   module: {
     rules: [
