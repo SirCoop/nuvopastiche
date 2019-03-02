@@ -9,8 +9,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 import Send from '@material-ui/icons/Send';
-// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-// import { DropzoneDialog } from 'material-ui-dropzone';
 import FileUploader from '../Upload/FileUploader';
 
 
