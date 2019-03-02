@@ -37,7 +37,7 @@ const styles = theme => ({
   form: {},
   gridContainer: {
     width: '100%',
-    padding: '0px'
+    padding: '0px',
   },
   guide: {
     textAlign: 'center',
@@ -74,7 +74,7 @@ class Form extends React.Component {
 
   // files is an array regardless of file limit prop on uploader
   handlePersonalImageSave = (file) => {
-    console.log('file: ', file);    
+    console.log('file: ', file);
     const { formObj, handlePersonalImageUpload, startAthena } = this.props;
     handlePersonalImageUpload(file, formObj);
     this.setState({
@@ -112,7 +112,7 @@ class Form extends React.Component {
           align="center"
           className={classes.header}
         >
-          -- NuvoPastiche --
+          {'Nuvo Pastiche'}
         </Typography>
         <form className={classes.form}>
           <Grid container spacing={24} className={classes.gridContainer}>
@@ -162,7 +162,7 @@ class Form extends React.Component {
                 placeholder="abc@gmail.com"
               />
               {/* Email */}
-            </Grid>            
+            </Grid>
             <Grid item xs={12} sm={4} />
           </Grid>
           <Grid container spacing={24} className={classes.gridContainer}>
@@ -190,7 +190,7 @@ class Form extends React.Component {
                 </div>
               </Grid>
             </Grid>
-              <Grid item xs={12} sm={5}>
+            <Grid item xs={12} sm={5}>
               <div className={classes.guide}>
                 <span>Upload an artistic image.</span>
               </div>
@@ -211,15 +211,16 @@ class Form extends React.Component {
                     styleImageData.name ? styleImageData.name : ''
                   }
                 </div>
-              </Grid>              
+              </Grid>
             </Grid>
             <Grid item xs={12} sm={1} />
           </Grid>
-          <Grid container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                className={classes.actionBtnGroup}
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            className={classes.actionBtnGroup}
           >
             <Button
               variant="contained"
@@ -228,9 +229,19 @@ class Form extends React.Component {
               disabled={!savedPersonalImage || !savedArtImage}
               onClick={startAthena}
             >
+
+
+
+
+
+
+
+
+
+
               Send                
               <Send className={classes.rightIcon} />
-              </Button>
+            </Button>
           </Grid>
         </form>
       </Paper>

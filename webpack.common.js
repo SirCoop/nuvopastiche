@@ -15,20 +15,20 @@ const HtmlwebpackPluginConfig = new HtmlwebpackPlugin({
 const CleanwebpackPluginConfig = new CleanwebpackPlugin([path.resolve(__dirname, '../dist')]);
 
 const env = dotenv.config().parsed;
-const EnvironmentPluginConfig = new webpack.EnvironmentPlugin({...env});
+const EnvironmentPluginConfig = new webpack.EnvironmentPlugin({ ...env });
 
 module.exports = {
   entry: `${__dirname}/src/index.js`,
   output: {
     filename: 'nuvo_pastiche_bundle-[hash].js',
-    path: path.resolve(__dirname, "../dist"),
-    publicPath: '/'
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
   },
   plugins: [
     HtmlwebpackPluginConfig,
     CleanwebpackPluginConfig,
     EnvironmentPluginConfig,
-    new ExtractPlugin('nuvo_pastiche_bundle-[hash].css'),    
+    new ExtractPlugin('nuvo_pastiche_bundle-[hash].css'),
   ],
   module: {
     rules: [
@@ -42,10 +42,10 @@ module.exports = {
             plugins: [
               '@babel/plugin-proposal-object-rest-spread',
               '@babel/plugin-syntax-dynamic-import',
-              '@babel/plugin-proposal-class-properties'
-            ]
-          }
-        }
+              '@babel/plugin-proposal-class-properties',
+            ],
+          },
+        },
       },
       {
         test: /\.css$/,
@@ -63,4 +63,4 @@ module.exports = {
       },
     ],
   },
-}
+};

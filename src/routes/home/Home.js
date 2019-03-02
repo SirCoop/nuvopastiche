@@ -3,14 +3,14 @@ import fp from 'lodash/fp';
 import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { 
+import {
   Grid,
   withStyles,
 } from '@material-ui/core';
 import Form from '../../components/Form';
 import athenaService from '../../services/athena.service';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
   },
   gridContainer: {
@@ -56,7 +56,7 @@ class HomeContainer extends React.Component {
     formObj.fileName = name;
     athenaService.uploadPersonalImage(images, formObj)
       .then(() => {
-        console.log("The file is successfully uploaded");
+        console.log('The file is successfully uploaded');
         this.setState({
           savedPersonalImage: true,
           personalImageData: {
@@ -73,7 +73,7 @@ class HomeContainer extends React.Component {
     formObj.fileName = name;
     athenaService.uploadArtImage(images, formObj)
       .then(() => {
-        console.log("The file is successfully uploaded");
+        console.log('The file is successfully uploaded');
         this.setState({
           savedArtImage: true,
           styleImageData: {
@@ -86,10 +86,10 @@ class HomeContainer extends React.Component {
   };
 
   startAthena = () => {
-    const { formObj: { firstName, lastName, email }, personalImageData, styleImageData, } = this.state;
-    const jobInfo = { 
+    const { formObj: { firstName, lastName, email }, personalImageData, styleImageData } = this.state;
+    const jobInfo = {
       userDirectory: `${firstName}_${lastName}`,
-      email: email,
+      email,
       contentImage: personalImageData.name,
       styleImage: styleImageData.name,
     };
@@ -147,7 +147,7 @@ class HomeContainer extends React.Component {
     return (
       <Grid container spacing={24} className={classnames(classes.gridContainer)}>
         <Grid item xs={12} sm={1} />
-        <Grid item xs={12} sm={10} >
+        <Grid item xs={12} sm={10}>
           <Form
             formObj={formObj}
             formValid={isValid}
@@ -158,12 +158,12 @@ class HomeContainer extends React.Component {
             savedPersonalImage={savedPersonalImage}
             savedArtImage={savedArtImage}
             styleImageData={styleImageData}
-            startAthena={this.startAthena}     
+            startAthena={this.startAthena}
           />
         </Grid>
         <Grid item xs={12} sm={1} />
       </Grid>
-        
+
     );
   }
 }
@@ -175,6 +175,6 @@ const ConnectedHomeContainer = fp.compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
-)(HomeContainer)
+)(HomeContainer);
 
 export default ConnectedHomeContainer;
