@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const common = require('./webpack.common');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const dotenv = require('dotenv');
+const common = require('./webpack.common');
 
 const env = dotenv.config().parsed;
 
@@ -24,10 +24,10 @@ module.exports = merge(common, {
         sourceMap: true,
         uglifyOptions: {
           compress: {
-            inline: false
-          }
-        }
-      })
+            inline: false,
+          },
+        },
+      }),
     ],
     runtimeChunk: false,
     splitChunks: {
@@ -37,10 +37,10 @@ module.exports = merge(common, {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor_app',
           chunks: 'all',
-          minChunks: 2
-        }
-      }
-    }
+          minChunks: 2,
+        },
+      },
+    },
   },
   plugins: [
     new webpack.EnvironmentPlugin({
