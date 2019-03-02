@@ -21,7 +21,7 @@ module.exports = {
   entry: `${__dirname}/src/index.js`,
   output: {
     filename: 'nuvo_pastiche_bundle-[hash].js',
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, './dist'),
     publicPath: '/',
   },
   plugins: [
