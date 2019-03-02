@@ -49,14 +49,12 @@ App.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
   onToggleIsSidebarOpen: PropTypes.func.isRequired,
   isSidebarOpen: PropTypes.bool.isRequired,
-  model: PropTypes.shape({}),
 };
 
 App.propTypes = {
   classes: PropTypes.shape({}),
   onToggleIsSidebarOpen: PropTypes.func,
   isSidebarOpen: PropTypes.bool,
-  model: PropTypes.shape({}),
 };
 
 const mapStateToProps = ({ isSidebarOpen }) => ({

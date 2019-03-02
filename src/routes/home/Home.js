@@ -12,6 +12,12 @@ import {
 import Form from '../../components/Form';
 import athenaService from '../../services/athena.service';
 
+import CONSTANTS from '../../constants';
+
+const { API_ROOT } = CONSTANTS;
+
+console.log('API_ROOT: ', API_ROOT);
+
 const styles = () => ({
   root: {
   },

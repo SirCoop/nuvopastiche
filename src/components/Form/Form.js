@@ -11,7 +11,6 @@ import {
 import Send from '@material-ui/icons/Send';
 import FileUploader from '../Upload/FileUploader';
 
-
 const styles = theme => ({
   root: {
     backgroundColor: '#efefef',
