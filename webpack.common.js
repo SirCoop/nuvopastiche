@@ -12,7 +12,7 @@ const HtmlwebpackPluginConfig = new HtmlwebpackPlugin({
   favicon: '',
 });
 
-const CleanwebpackPluginConfig = new CleanwebpackPlugin([path.resolve(__dirname, '../dist')]);
+const CleanwebpackPluginConfig = new CleanwebpackPlugin([path.resolve(__dirname, './dist')]);
 
 const env = dotenv.config().parsed;
 const EnvironmentPluginConfig = new webpack.EnvironmentPlugin({ ...env });
