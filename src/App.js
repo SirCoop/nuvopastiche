@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
 import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
@@ -21,7 +22,9 @@ const styles = {
 };
 
 const App = (props) => {
-  const { onToggleIsSidebarOpen, isSidebarOpen, classes, model } = props;
+  const {
+    onToggleIsSidebarOpen, isSidebarOpen, classes,
+  } = props;
 
   return (
     <div>
@@ -42,13 +45,26 @@ const App = (props) => {
   );
 };
 
+App.defaultProps = {
+  classes: PropTypes.shape({}).isRequired,
+  onToggleIsSidebarOpen: PropTypes.func.isRequired,
+  isSidebarOpen: PropTypes.bool.isRequired,
+  model: PropTypes.shape({}),
+};
+
+App.propTypes = {
+  classes: PropTypes.shape({}),
+  onToggleIsSidebarOpen: PropTypes.func,
+  isSidebarOpen: PropTypes.bool,
+  model: PropTypes.shape({}),
+};
+
 const mapStateToProps = ({ isSidebarOpen }) => ({
   isSidebarOpen,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onToggleIsSidebarOpen: currentState =>
-    () => dispatch(handleToggleIsSidebarOpen(!currentState)),
+  onToggleIsSidebarOpen: currentState => () => dispatch(handleToggleIsSidebarOpen(!currentState)),
 });
 
 export default fp.compose(

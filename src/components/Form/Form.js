@@ -1,16 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import {
   Button,
-  FormControl,
-  FormHelperText,
   Grid,
-  InputLabel,
-  Icon,
-  MenuItem,
   Paper,
-  Select,
   TextField,
   Typography,
   withStyles,
@@ -60,35 +53,21 @@ const styles = theme => ({
   actionBtnGroup: {
     marginTop: '1rem',
   },
-  rightIcon: {
-    marginLeft: theme.spacing.unit,
-  },
 });
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {}
 
   // files is an array regardless of file limit prop on uploader
   handlePersonalImageSave = (file) => {
-    console.log('file: ', file);
-    const { formObj, handlePersonalImageUpload, startAthena } = this.props;
+    const { formObj, handlePersonalImageUpload } = this.props;
     handlePersonalImageUpload(file, formObj);
-    this.setState({
-      open: false,
-    });
   };
 
   // files is an array regardless of file limit prop on uploader
   handleArtImageSave = (file) => {
     const { formObj, handleArtImageUpload } = this.props;
     handleArtImageUpload(file, formObj);
-    this.setState({
-      open: false,
-    });
   };
 
   generateKey = index => `${index}_${new Date().getTime()}`;
@@ -229,17 +208,7 @@ class Form extends React.Component {
               disabled={!savedPersonalImage || !savedArtImage}
               onClick={startAthena}
             >
-
-
-
-
-
-
-
-
-
-
-              Send                
+              {'Send'}
               <Send className={classes.rightIcon} />
             </Button>
           </Grid>
@@ -256,7 +225,11 @@ Form.defaultProps = {
   handleArtImageUpload: PropTypes.func.isRequired,
   handlePersonalImageUpload: PropTypes.func.isRequired,
   handleInput: PropTypes.func.isRequired,
+  personalImageData: PropTypes.shape({}).isRequired,
   savedPersonalImage: PropTypes.bool.isRequired,
+  savedArtImage: PropTypes.bool.isRequired,
+  styleImageData: PropTypes.shape({}).isRequired,
+  startAthena: PropTypes.func.isRequired,
 };
 
 Form.propTypes = {
@@ -266,7 +239,11 @@ Form.propTypes = {
   handleArtImageUpload: PropTypes.func,
   handlePersonalImageUpload: PropTypes.func,
   handleInput: PropTypes.func,
+  personalImageData: PropTypes.shape({}),
   savedPersonalImage: PropTypes.bool,
+  savedArtImage: PropTypes.bool,
+  styleImageData: PropTypes.shape({}),
+  startAthena: PropTypes.func,
 };
 
 export default withStyles(styles)(Form);

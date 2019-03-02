@@ -1,4 +1,6 @@
+/* eslint no-console: 0 */ // --> OFF
 import React from 'react';
+import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
 import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
@@ -33,7 +35,6 @@ class HomeContainer extends React.Component {
         email: '',
         fileName: '',
       },
-      jobStarted: false,
       personalImageData: {
         name: '',
         size: '',
@@ -53,8 +54,9 @@ class HomeContainer extends React.Component {
 
   onPersonalImageUpload = (images, formObj) => {
     const { name } = images[0];
-    formObj.fileName = name;
-    athenaService.uploadPersonalImage(images, formObj)
+    const formData = formObj;
+    formData.fileName = name;
+    athenaService.uploadPersonalImage(images, formData)
       .then(() => {
         console.log('The file is successfully uploaded');
         this.setState({
@@ -70,8 +72,9 @@ class HomeContainer extends React.Component {
 
   onArtImageUpload = (images, formObj) => {
     const { name } = images[0];
-    formObj.fileName = name;
-    athenaService.uploadArtImage(images, formObj)
+    const formData = formObj;
+    formData.fileName = name;
+    athenaService.uploadArtImage(images, formData)
       .then(() => {
         console.log('The file is successfully uploaded');
         this.setState({
@@ -85,6 +88,16 @@ class HomeContainer extends React.Component {
       });
   };
 
+  get formValid() {
+    const {
+      firstNameValid,
+      lastNameValid,
+      emailValid,
+    } = this.state;
+
+    return firstNameValid && lastNameValid && emailValid;
+  }
+
   startAthena = () => {
     const { formObj: { firstName, lastName, email }, personalImageData, styleImageData } = this.state;
     const jobInfo = {
@@ -94,14 +107,11 @@ class HomeContainer extends React.Component {
       styleImage: styleImageData.name,
     };
     athenaService.startAthenaJob(jobInfo)
-      .then(() => {
-        this.setState({
-          jobStarted: true,
-        });
-      }).catch((error) => {
+      .then(() => {})
+      .catch((error) => {
         console.log('Error: ', error);
       });
-  }
+  };
 
   handleInput = ({ target }) => {
     const {
@@ -120,16 +130,6 @@ class HomeContainer extends React.Component {
       [formValid]: true,
     });
   };
-
-  get formValid() {
-    const {
-      firstNameValid,
-      lastNameValid,
-      emailValid,
-    } = this.state;
-
-    return firstNameValid && lastNameValid && emailValid;
-  }
 
   render() {
     const {
@@ -168,8 +168,16 @@ class HomeContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({}) => ({});
-const mapDispatchToProps = dispatch => ({});
+HomeContainer.defaultProps = {
+  classes: PropTypes.shape({}).isRequired,
+};
+
+HomeContainer.propTypes = {
+  classes: PropTypes.shape({}),
+};
+
+const mapStateToProps = () => ({});
+const mapDispatchToProps = () => ({});
 
 const ConnectedHomeContainer = fp.compose(
   withRouter,

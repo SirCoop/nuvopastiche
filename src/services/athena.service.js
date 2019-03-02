@@ -1,11 +1,13 @@
+/* eslint no-use-before-define: 0 */ // --> OFF
+
 import axios from 'axios';
-import _ from 'lodash';
+// import _ from 'lodash';
 import CONSTANTS from '../constants';
 
 const { API_ROOT } = CONSTANTS;
 
 const athenaService = {
-  startAthenaJob: (formObj) => startAthenaJob(formObj),
+  startAthenaJob: formObj => startAthenaJob(formObj),
   uploadPersonalImage: (files, formObj) => marshallPersonalImageUpload(files, formObj),
   uploadArtImage: (files, formObj) => marshallArtImageUpload(files, formObj),
 };
@@ -14,7 +16,7 @@ export default athenaService;
 
 const startAthenaJob = (jobInfo) => {
   return axios.post(`${API_ROOT}/api/athena/start`, jobInfo);
-}
+};
 
 const marshallPersonalImageUpload = (files, formObj) => {
   const formData = new FormData();
@@ -26,7 +28,7 @@ const marshallPersonalImageUpload = (files, formObj) => {
   const config = {
     headers: {
       'content-type': 'multipart/form-data',
-    }
+    },
   };
   return axios.post(`${API_ROOT}/api/athena/upload-images/content`, formData, config);
 };
@@ -41,7 +43,7 @@ const marshallArtImageUpload = (files, formObj) => {
   const config = {
     headers: {
       'content-type': 'multipart/form-data',
-    }
+    },
   };
   return axios.post(`${API_ROOT}/api/athena/upload-images/style`, formData, config);
 };
