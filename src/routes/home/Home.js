@@ -26,14 +26,16 @@ class HomeContainer extends React.Component {
     super(props);
 
     this.state = {
+      activeStep: 1,
+      emailValid: false,
       firstNameValid: false,
       lastNameValid: false,
-      emailValid: false,
       formObj: {
         firstName: '',
         lastName: '',
         email: '',
         fileName: '',
+        quality: 100,
       },
       personalImageData: {
         name: '',
@@ -131,8 +133,20 @@ class HomeContainer extends React.Component {
     });
   };
 
+  handleSliderInput = (event, value) => {
+    const { formObj } = this.state;
+
+    this.setState({
+      formObj: {
+        ...formObj,
+        quality: value,
+      },
+    });
+  };
+
   render() {
     const {
+      activeStep,
       emailValid,
       firstNameValid,
       formObj,
@@ -149,11 +163,13 @@ class HomeContainer extends React.Component {
         <Grid item xs={12} sm={1} />
         <Grid item xs={12} sm={10}>
           <Form
+            activeStep={activeStep}
             formObj={formObj}
             formValid={isValid}
             handleArtImageUpload={this.onArtImageUpload}
             handlePersonalImageUpload={this.onPersonalImageUpload}
             handleInput={this.handleInput}
+            handleSliderInput={this.handleSliderInput}
             personalImageData={personalImageData}
             savedPersonalImage={savedPersonalImage}
             savedArtImage={savedArtImage}

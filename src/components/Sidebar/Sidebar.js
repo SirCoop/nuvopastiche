@@ -21,7 +21,7 @@ const styles = {
     color: '#fff',
   },
   sideBar: {
-    width: 75,    
+    width: 75,
     transition: 'all .2s ease',
     position: 'fixed',
     height: '100vh',
@@ -29,7 +29,7 @@ const styles = {
     zIndex: 99,
   },
   sideBarIsOpen: {
-    width: 225,    
+    width: 225,
     transition: 'all .2s ease',
     position: 'fixed',
     height: '100vh',
@@ -83,8 +83,8 @@ const styles = {
 
 const links = [
   {
-    to: "/home",
-    title: "Home",
+    to: '/home',
+    title: 'Home',
     Link: Home,
   },
   // {
@@ -94,40 +94,41 @@ const links = [
   // },
 ];
 
-const mapLinksToNavLinks = ({ isSidebarOpen }) =>
-  classes => fp.map(({ Link, to, exact, title }) => (
-    <NavLink
-      key={title}
-      exact={exact}
-      activeClassName={classes.activeLink}
-      to={to}
-      className={cn(classes.link, ({
-        [classes.sidebarIsOpenLink]: isSidebarOpen,
-      }))}
-    >
-      <Link className={classes.icon} />
-      {isSidebarOpen && 
-        <span className={classes.iconTitle}>{title}</span>
+const mapLinksToNavLinks = ({ isSidebarOpen }) => classes => fp.map(({
+  Link, to, exact, title,
+}) => (
+  <NavLink
+    key={title}
+    exact={exact}
+    activeClassName={classes.activeLink}
+    to={to}
+    className={cn(classes.link, ({
+      [classes.sidebarIsOpenLink]: isSidebarOpen,
+    }))}
+  >
+    <Link className={classes.icon} />
+    {isSidebarOpen
+        && <span className={classes.iconTitle}>{title}</span>
       }
-    </NavLink>
-  ));
+  </NavLink>
+));
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   const { classes, isSidebarOpen, onToggleSidebar } = props;
 
   return (
     <div className={cn(classes.sideBar,
-      cn({ [classes.sideBarIsOpen]: isSidebarOpen,
-      }))
-    }>
+      cn({ [classes.sideBarIsOpen]: isSidebarOpen }))
+    }
+    >
       <div className={classes.profile}>athena</div>
       {mapLinksToNavLinks(props)(classes)(links)}
       <div className={classes.arrowForward}>
         <Button onClick={onToggleSidebar} className={classes.forwardButton}>
           {
-            isSidebarOpen 
-            ? <ArrowBack />
-            : <ArrowForward />
+            isSidebarOpen
+              ? <ArrowBack />
+              : <ArrowForward />
           }
         </Button>
       </div>
