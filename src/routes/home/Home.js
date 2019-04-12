@@ -11,6 +11,7 @@ import {
   Grid,
   withStyles,
 } from '@material-ui/core';
+import notify from '../../components/Snackbar/notify';
 import Form from '../../components/Form';
 import athenaService from '../../services/athena.service';
 
@@ -39,6 +40,7 @@ class HomeContainer extends React.Component {
 
     this.state = {
       activeStep: 1,
+      disableStart: false,
       emailValid: false,
       firstNameValid: false,
       lastNameValid: false,
@@ -72,7 +74,10 @@ class HomeContainer extends React.Component {
     formData.fileName = name;
     athenaService.uploadPersonalImage(images, formData)
       .then(() => {
-        console.log('The file is successfully uploaded');
+        notify({
+          message: 'The file is successfully uploaded',
+          variant: 'success',
+        });
         this.setState({
           savedPersonalImage: true,
           personalImageData: {
@@ -80,7 +85,10 @@ class HomeContainer extends React.Component {
           },
         });
       }).catch((error) => {
-        console.log('Error: ', error);
+        notify({
+          message: `${error}`,
+          variant: 'error',
+        });
       });
   };
 
@@ -121,7 +129,9 @@ class HomeContainer extends React.Component {
       styleImage: styleImageData.name,
     };
     athenaService.startAthenaJob(jobInfo)
-      .then(() => {})
+      .then(() => {
+        this.setState({ disableStart: true });
+      })
       .catch((error) => {
         console.log('Error: ', error);
       });
@@ -159,6 +169,7 @@ class HomeContainer extends React.Component {
   render() {
     const {
       activeStep,
+      disableStart,
       emailValid,
       firstNameValid,
       formObj,
@@ -185,6 +196,7 @@ class HomeContainer extends React.Component {
               />
               <Form
                 activeStep={activeStep}
+                disableStart={disableStart}
                 formObj={formObj}
                 formValid={isValid}
                 handleArtImageUpload={this.onArtImageUpload}

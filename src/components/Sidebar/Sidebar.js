@@ -2,10 +2,12 @@ import React from 'react';
 import fp from 'lodash/fp';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import Home from '@material-ui/icons/Home';
 import ArrowBack from '@material-ui/icons/ArrowBack';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  Button,
+  withStyles,
+} from '@material-ui/core';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 
 const styles = {

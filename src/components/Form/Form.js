@@ -63,6 +63,7 @@ class Form extends React.Component {
   render() {
     const {
       classes,
+      disableStart,
       formObj,
       handleInput,
       formValid,
@@ -183,7 +184,7 @@ class Form extends React.Component {
                 variant="contained"
                 color="primary"
                 className={classes.sendButton}
-                disabled={!savedPersonalImage || !savedArtImage}
+                disabled={!savedPersonalImage || !savedArtImage || disableStart}
                 onClick={startAthena}
               >
                 {'Send'}
@@ -199,6 +200,7 @@ class Form extends React.Component {
 
 Form.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  disableStart: PropTypes.bool.isRequired,
   formObj: PropTypes.shape({}).isRequired,
   formValid: PropTypes.bool.isRequired,
   handleArtImageUpload: PropTypes.func.isRequired,
@@ -213,6 +215,7 @@ Form.defaultProps = {
 
 Form.propTypes = {
   classes: PropTypes.shape({}),
+  disableStart: PropTypes.bool,
   formObj: PropTypes.shape({}),
   formValid: PropTypes.bool,
   handleArtImageUpload: PropTypes.func,
