@@ -2,10 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
+  Card,
+  CardHeader,
   Grid,
   withStyles,
 } from '@material-ui/core';
@@ -15,9 +17,19 @@ import athenaService from '../../services/athena.service';
 const styles = () => ({
   root: {
   },
+  card: {
+    overflow: 'visible',
+  },
+  cardHeader: {
+    backgroundColor: '#eee',
+    textAlign: 'center',
+  },
   gridContainer: {
     width: '100%',
     padding: '2rem 0px 0px 0px',
+  },
+  title: {
+    fontSize: '2rem',
   },
 });
 
@@ -159,27 +171,37 @@ class HomeContainer extends React.Component {
     const { classes } = this.props;
     const isValid = firstNameValid && lastNameValid && emailValid;
     return (
-      <Grid container spacing={24} className={classnames(classes.gridContainer)}>
-        <Grid item xs={12} sm={1} />
-        <Grid item xs={12} sm={10}>
-          <Form
-            activeStep={activeStep}
-            formObj={formObj}
-            formValid={isValid}
-            handleArtImageUpload={this.onArtImageUpload}
-            handlePersonalImageUpload={this.onPersonalImageUpload}
-            handleInput={this.handleInput}
-            handleSliderInput={this.handleSliderInput}
-            personalImageData={personalImageData}
-            savedPersonalImage={savedPersonalImage}
-            savedArtImage={savedArtImage}
-            styleImageData={styleImageData}
-            startAthena={this.startAthena}
-          />
+      <React.Fragment>
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={4} />
+          <Grid item xs={12} sm={4}>
+            <Card className={classes.card}>
+              <CardHeader
+                classes={{
+                  title: classes.title,
+                }}
+                className={classNames(classes.cardHeader)}
+                title="Nuvo Pastiche"
+              />
+              <Form
+                activeStep={activeStep}
+                formObj={formObj}
+                formValid={isValid}
+                handleArtImageUpload={this.onArtImageUpload}
+                handlePersonalImageUpload={this.onPersonalImageUpload}
+                handleInput={this.handleInput}
+                handleSliderInput={this.handleSliderInput}
+                personalImageData={personalImageData}
+                savedPersonalImage={savedPersonalImage}
+                savedArtImage={savedArtImage}
+                styleImageData={styleImageData}
+                startAthena={this.startAthena}
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={4} />
         </Grid>
-        <Grid item xs={12} sm={1} />
-      </Grid>
-
+      </React.Fragment>
     );
   }
 }

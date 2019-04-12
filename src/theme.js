@@ -1,8 +1,8 @@
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: 'Khula',
+    fontFamily: 'Khula, sans-serif',
     useNextVariants: true,
   },
   overrides: {

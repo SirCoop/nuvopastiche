@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Home from '@material-ui/icons/Home';
-import Settings from '@material-ui/icons/Settings';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { withStyles } from '@material-ui/core/styles';
 import ArrowForward from '@material-ui/icons/ArrowForward';
@@ -29,7 +28,7 @@ const styles = {
     zIndex: 99,
   },
   sideBarIsOpen: {
-    width: 225,
+    width: 200,
     transition: 'all .2s ease',
     position: 'fixed',
     height: '100vh',
@@ -87,11 +86,6 @@ const links = [
     title: 'Home',
     Link: Home,
   },
-  // {
-  //   title: "Settings",
-  //   to: "/settings",
-  //   Link: Settings,
-  // },
 ];
 
 const mapLinksToNavLinks = ({ isSidebarOpen }) => classes => fp.map(({
@@ -121,7 +115,7 @@ const Sidebar = (props) => {
       cn({ [classes.sideBarIsOpen]: isSidebarOpen }))
     }
     >
-      <div className={classes.profile}>athena</div>
+      {/* <div className={classes.profile}>NuvoPastiche</div> */}
       {mapLinksToNavLinks(props)(classes)(links)}
       <div className={classes.arrowForward}>
         <Button onClick={onToggleSidebar} className={classes.forwardButton}>

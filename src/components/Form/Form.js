@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Grid,
-  Paper,
   TextField,
-  Typography,
   withStyles,
 } from '@material-ui/core';
 import Send from '@material-ui/icons/Send';
@@ -15,31 +13,23 @@ const styles = theme => ({
   root: {
     backgroundColor: '#efefef',
     flexGrow: 1,
-    height: '90vh',
-    paddingTop: '2rem',
   },
-  header: {
-    fontFamily: 'Khula, sans-serif !important',
-    color: '#000',
-    marginTop: '1rem',
-    marginBottom: '4rem',
-  },
-  form: {},
-  gridContainer: {
-    width: '100%',
-    padding: '0px',
+  form: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   },
   guide: {
     textAlign: 'center',
-    marginTop: '10rem',
-    fontSize: '2rem',
+    marginTop: '1rem',
+    fontSize: '1rem',
   },
   textField: {
-    width: '100%',
+    width: '90%',
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   },
-  button: {
+  sendButton: {
     margin: theme.spacing.unit,
-    fontFamily: 'Khula, sans-serif !important',
   },
   input: {
     display: 'none',
@@ -49,6 +39,7 @@ const styles = theme => ({
   },
   actionBtnGroup: {
     marginTop: '1rem',
+    textAlign: 'center',
   },
 });
 
@@ -82,83 +73,69 @@ class Form extends React.Component {
       startAthena,
     } = this.props;
     return (
-      <Paper className={classes.root}>
-        <Typography
-          variant="h4"
-          align="center"
-          className={classes.header}
-        >
-          {'Nuvo Pastiche'}
-        </Typography>
-        <form className={classes.form}>
-          <Grid container spacing={24} className={classes.gridContainer}>
-            <Grid item xs={12} sm={4} />
-            <Grid item xs={12} sm={2}>
-              <TextField
-                label="First Name"
-                type="text"
-                name="firstName"
-                className={classes.textField}
-                InputProps={{
-                  value: formObj.firstName,
-                  onChange: handleInput,
-                }}
-                placeholder="First Name"
-              />
-              {/* First Name */}
-            </Grid>
-            <Grid item xs={12} sm={2}>
-              <TextField
-                label="Last Name"
-                type="text"
-                name="lastName"
-                className={classes.textField}
-                InputProps={{
-                  value: formObj.lastName,
-                  onChange: handleInput,
-                }}
-                placeholder="Last Name"
-              />
-              {/* Last Name */}
-            </Grid>
-            <Grid item xs={12} sm={4} />
+      <form className={classes.form}>
+        <Grid container spacing={24} className={classes.gridContainer}>
+          <Grid item xs={6}>
+            <TextField
+              label="First Name"
+              type="text"
+              name="firstName"
+              className={classes.textField}
+              InputProps={{
+                value: formObj.firstName,
+                onChange: handleInput,
+              }}
+              placeholder="First Name"
+            />
+            {/* First Name */}
           </Grid>
-          <Grid container spacing={24} className={classes.gridContainer}>
-            <Grid item xs={12} sm={4} />
-            <Grid item xs={12} sm={4}>
-              <TextField
-                label="Email"
-                type="text"
-                name="email"
-                className={classes.textField}
-                InputProps={{
-                  value: formObj.email,
-                  onChange: handleInput,
-                }}
-                placeholder="abc@gmail.com"
-              />
-              {/* Email */}
-            </Grid>
-            <Grid item xs={12} sm={4} />
+          <Grid item xs={6}>
+            <TextField
+              label="Last Name"
+              type="text"
+              name="lastName"
+              className={classes.textField}
+              InputProps={{
+                value: formObj.lastName,
+                onChange: handleInput,
+              }}
+              placeholder="Last Name"
+            />
+            {/* Last Name */}
           </Grid>
-          <Grid container spacing={24} className={classes.gridContainer}>
-            <Grid item xs={12} sm={1} />
-            <Grid item xs={12} sm={5}>
-              <div className={classes.guide}>
-                <span>Upload a personal photo.</span>
-              </div>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                className={classes.actionBtnGroup}
-              >
-                <FileUploader
-                  disable={!formValid || savedPersonalImage}
-                  filesLimit={1}
-                  handleUploadSubmit={this.handlePersonalImageSave}
-                />
+          <Grid item xs={12}>
+            <TextField
+              label="Email"
+              type="text"
+              name="email"
+              className={classes.textField}
+              InputProps={{
+                value: formObj.email,
+                onChange: handleInput,
+              }}
+              placeholder="abc@gmail.com"
+            />
+            {/* Email */}
+          </Grid>
+          <Grid item xs={6}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              className={classes.actionBtnGroup}
+            >
+              <Grid item xs={12}>
+                <div className={classes.guide}>
+                  <span>Personal Photo</span>
+                </div>
+              </Grid>
+              <FileUploader
+                disable={!formValid || savedPersonalImage}
+                filesLimit={1}
+                handleUploadSubmit={this.handlePersonalImageSave}
+              />
+              <Grid item xs={12}>
                 <div>
                   {
                     personalImageData.name ? personalImageData.name : ''
@@ -166,22 +143,26 @@ class Form extends React.Component {
                 </div>
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={5}>
-              <div className={classes.guide}>
-                <span>Upload an artistic image.</span>
-              </div>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                className={classes.actionBtnGroup}
-              >
-                <FileUploader
-                  disable={!formValid || !savedPersonalImage || (savedPersonalImage && savedArtImage)}
-                  filesLimit={1}
-                  handleUploadSubmit={this.handleArtImageSave}
-                />
+          </Grid>
+          <Grid item xs={6}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              className={classes.actionBtnGroup}
+            >
+              <Grid item xs={12}>
+                <div className={classes.guide}>
+                  <span>Artistic Reference</span>
+                </div>
+              </Grid>
+              <FileUploader
+                disable={!formValid || !savedPersonalImage || (savedPersonalImage && savedArtImage)}
+                filesLimit={1}
+                handleUploadSubmit={this.handleArtImageSave}
+              />
+              <Grid item xs={12}>
                 <div>
                   {
                     styleImageData.name ? styleImageData.name : ''
@@ -189,7 +170,6 @@ class Form extends React.Component {
                 </div>
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={1} />
           </Grid>
           <Grid
             container
@@ -198,19 +178,21 @@ class Form extends React.Component {
             alignItems="center"
             className={classes.actionBtnGroup}
           >
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              disabled={!savedPersonalImage || !savedArtImage}
-              onClick={startAthena}
-            >
-              {'Send'}
-              <Send className={classes.rightIcon} />
-            </Button>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.sendButton}
+                disabled={!savedPersonalImage || !savedArtImage}
+                onClick={startAthena}
+              >
+                {'Send'}
+                <Send className={classes.rightIcon} />
+              </Button>
+            </Grid>
           </Grid>
-        </form>
-      </Paper>
+        </Grid>
+      </form>
     );
   }
 }
