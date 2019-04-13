@@ -73,17 +73,26 @@ class HomeContainer extends React.Component {
     const formData = formObj;
     formData.fileName = name;
     athenaService.uploadPersonalImage(images, formData)
-      .then(() => {
-        notify({
-          message: 'The file is successfully uploaded',
-          variant: 'success',
-        });
-        this.setState({
-          savedPersonalImage: true,
-          personalImageData: {
-            name,
-          },
-        });
+      .then(({ data }) => {
+        const { message } = data;
+        if (message) {
+          notify({
+            message,
+            variant: 'warning',
+            duration: 4000,
+          });
+        } else {
+          notify({
+            message: 'The file is successfully uploaded',
+            variant: 'success',
+          });
+          this.setState({
+            savedPersonalImage: true,
+            personalImageData: {
+              name,
+            },
+          });
+        }
       }).catch((error) => {
         notify({
           message: `${error}`,
@@ -97,17 +106,26 @@ class HomeContainer extends React.Component {
     const formData = formObj;
     formData.fileName = name;
     athenaService.uploadArtImage(images, formData)
-      .then(() => {
-        notify({
-          message: 'The file is successfully uploaded',
-          variant: 'success',
-        });
-        this.setState({
-          savedArtImage: true,
-          styleImageData: {
-            name,
-          },
-        });
+      .then(({ data }) => {
+        const { message } = data;
+        if (message) {
+          notify({
+            message,
+            variant: 'warning',
+            duration: 4000,
+          });
+        } else {
+          notify({
+            message: 'The file is successfully uploaded',
+            variant: 'success',
+          });
+          this.setState({
+            savedArtImage: true,
+            styleImageData: {
+              name,
+            },
+          });
+        }
       }).catch((error) => {
         notify({
           message: `${error}`,
