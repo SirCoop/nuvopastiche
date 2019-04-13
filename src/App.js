@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import './styles/index.css';
 import Sidebar from './components/Sidebar';
 import Router from './routes';
+import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import handleToggleIsSidebarOpen from './redux/actions/toggleSidebar';
 
 const styles = {
@@ -39,6 +40,7 @@ const App = (props) => {
         })}
         >
           <Router />
+          <CustomizedSnackbars />
         </div>
       </React.Fragment>
     </div>

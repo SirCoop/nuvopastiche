@@ -98,7 +98,10 @@ class HomeContainer extends React.Component {
     formData.fileName = name;
     athenaService.uploadArtImage(images, formData)
       .then(() => {
-        console.log('The file is successfully uploaded');
+        notify({
+          message: 'The file is successfully uploaded',
+          variant: 'success',
+        });
         this.setState({
           savedArtImage: true,
           styleImageData: {
@@ -106,7 +109,10 @@ class HomeContainer extends React.Component {
           },
         });
       }).catch((error) => {
-        console.log('Error: ', error);
+        notify({
+          message: `${error}`,
+          variant: 'error',
+        });
       });
   };
 
@@ -130,10 +136,17 @@ class HomeContainer extends React.Component {
     };
     athenaService.startAthenaJob(jobInfo)
       .then(() => {
+        notify({
+          message: 'Your pastiche will be emailed upon completion.',
+          variant: 'success',
+        });
         this.setState({ disableStart: true });
       })
       .catch((error) => {
-        console.log('Error: ', error);
+        notify({
+          message: `${error}`,
+          variant: 'error',
+        });
       });
   };
 
