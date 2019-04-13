@@ -157,6 +157,7 @@ class HomeContainer extends React.Component {
         notify({
           message: 'Your pastiche will be emailed upon completion.',
           variant: 'success',
+          duration: 4000,
         });
         this.setState({ disableStart: true });
       })
