@@ -12,6 +12,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import notify from '../../components/Snackbar/notify';
+import ProgressBar from '../../components/ProgressBar';
 import Form from '../../components/Form';
 import athenaService from '../../services/athena.service';
 
@@ -44,6 +45,7 @@ class HomeContainer extends React.Component {
       emailValid: false,
       firstNameValid: false,
       lastNameValid: false,
+      loading: false,
       formObj: {
         firstName: '',
         lastName: '',
@@ -72,6 +74,7 @@ class HomeContainer extends React.Component {
     const { name } = images[0];
     const formData = formObj;
     formData.fileName = name;
+    this.setState({ loading: true });
     athenaService.uploadPersonalImage(images, formData)
       .then(({ data }) => {
         const { message } = data;
@@ -91,6 +94,7 @@ class HomeContainer extends React.Component {
             personalImageData: {
               name,
             },
+            loading: false,
           });
         }
       }).catch((error) => {
@@ -105,6 +109,7 @@ class HomeContainer extends React.Component {
     const { name } = images[0];
     const formData = formObj;
     formData.fileName = name;
+    this.setState({ loading: true });
     athenaService.uploadArtImage(images, formData)
       .then(({ data }) => {
         const { message } = data;
@@ -124,6 +129,7 @@ class HomeContainer extends React.Component {
             styleImageData: {
               name,
             },
+            loading: false,
           });
         }
       }).catch((error) => {
@@ -206,6 +212,7 @@ class HomeContainer extends React.Component {
       firstNameValid,
       formObj,
       lastNameValid,
+      loading,
       personalImageData,
       savedArtImage,
       savedPersonalImage,
@@ -226,6 +233,7 @@ class HomeContainer extends React.Component {
                 className={classNames(classes.cardHeader)}
                 title="Nuvo Pastiche"
               />
+              <ProgressBar loading={loading} />
               <Form
                 activeStep={activeStep}
                 disableStart={disableStart}
