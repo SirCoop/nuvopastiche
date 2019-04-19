@@ -1,5 +1,5 @@
-@import url('./iphone.css');
-@import url('./android.css');
+@import url('./iphone.scss');
+@import url('./android.scss');
 
 body {
   margin: 0;
