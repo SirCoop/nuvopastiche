@@ -11,10 +11,10 @@ import {
   Grid,
   withStyles,
 } from '@material-ui/core';
-import NPSpinner from '../../components/Spinner';
 import notify from '../../components/Snackbar/notify';
 import Form from '../../components/Form';
 import athenaService from '../../services/athena.service';
+import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 
 const styles = () => ({
   root: {
@@ -45,7 +45,6 @@ class HomeContainer extends React.Component {
       emailValid: false,
       firstNameValid: false,
       lastNameValid: false,
-      loading: false,
       formObj: {
         firstName: '',
         lastName: '',
@@ -71,22 +70,23 @@ class HomeContainer extends React.Component {
   componentDidMount() {}
 
   onPersonalImageUpload = (images, formObj) => {
+    const { toggleSpinner } = this.props;
+    toggleSpinner(true);
     const { name } = images[0];
     const formData = formObj;
     formData.fileName = name;
-    this.setState({ loading: true });
     athenaService.uploadPersonalImage(images, formData)
       .then(({ data }) => {
         const { message } = data;
         if (message) {
-          this.setState({ loading: false });
+          toggleSpinner(false);
           notify({
             message,
             variant: 'warning',
             duration: 4000,
           });
         } else {
-          this.setState({ loading: false });
+          toggleSpinner(false);
           notify({
             message: 'The file is successfully uploaded',
             variant: 'success',
@@ -96,11 +96,10 @@ class HomeContainer extends React.Component {
             personalImageData: {
               name,
             },
-            loading: false,
           });
         }
       }).catch((error) => {
-        this.setState({ loading: false });
+        toggleSpinner(false);
         notify({
           message: `${error}`,
           variant: 'error',
@@ -109,22 +108,23 @@ class HomeContainer extends React.Component {
   };
 
   onArtImageUpload = (images, formObj) => {
+    const { toggleSpinner } = this.props;
+    toggleSpinner(true);
     const { name } = images[0];
     const formData = formObj;
     formData.fileName = name;
-    this.setState({ loading: true });
     athenaService.uploadArtImage(images, formData)
       .then(({ data }) => {
         const { message } = data;
         if (message) {
-          this.setState({ loading: false });
+          toggleSpinner(false);
           notify({
             message,
             variant: 'warning',
             duration: 4000,
           });
         } else {
-          this.setState({ loading: false });
+          toggleSpinner(false);
           notify({
             message: 'The file is successfully uploaded',
             variant: 'success',
@@ -134,11 +134,10 @@ class HomeContainer extends React.Component {
             styleImageData: {
               name,
             },
-            loading: false,
           });
         }
       }).catch((error) => {
-        this.setState({ loading: false });
+        toggleSpinner(false);
         notify({
           message: `${error}`,
           variant: 'error',
@@ -157,6 +156,8 @@ class HomeContainer extends React.Component {
   }
 
   startAthena = () => {
+    const { toggleSpinner } = this.props;
+    toggleSpinner(true);
     const { formObj: { firstName, lastName, email }, personalImageData, styleImageData } = this.state;
     const jobInfo = {
       userDirectory: `${firstName}_${lastName}`,
@@ -166,6 +167,7 @@ class HomeContainer extends React.Component {
     };
     athenaService.startAthenaJob(jobInfo)
       .then(() => {
+        toggleSpinner(false);
         notify({
           message: 'Your pastiche will be emailed upon completion.',
           variant: 'success',
@@ -174,6 +176,7 @@ class HomeContainer extends React.Component {
         this.setState({ disableStart: true });
       })
       .catch((error) => {
+        toggleSpinner(false);
         notify({
           message: `${error}`,
           variant: 'error',
@@ -218,7 +221,6 @@ class HomeContainer extends React.Component {
       firstNameValid,
       formObj,
       lastNameValid,
-      loading,
       personalImageData,
       savedArtImage,
       savedPersonalImage,
@@ -254,7 +256,6 @@ class HomeContainer extends React.Component {
                 styleImageData={styleImageData}
                 startAthena={this.startAthena}
               />
-              <NPSpinner loading={loading} />
             </Card>
           </Grid>
           <Grid item xs={12} sm={4} />
@@ -266,14 +267,25 @@ class HomeContainer extends React.Component {
 
 HomeContainer.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  toggleSpinner: PropTypes.func.isRequired,
 };
 
 HomeContainer.propTypes = {
   classes: PropTypes.shape({}),
+  toggleSpinner: PropTypes.func,
 };
 
-const mapStateToProps = () => ({});
-const mapDispatchToProps = () => ({});
+const mapStateToProps = ({
+  activateSpinner,
+}) => ({
+  activateSpinner,
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleSpinner: (activateSpinner) => {
+    dispatch(spinnerActionCreators.toggleSpinner(activateSpinner));
+  },
+});
 
 const ConnectedHomeContainer = fp.compose(
   withRouter,

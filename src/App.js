@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar';
 import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import handleToggleIsSidebarOpen from './redux/actions/toggleSidebar';
+import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 
 const styles = {
   sidebarIsOpen: {
@@ -24,7 +25,7 @@ const styles = {
 
 const App = (props) => {
   const {
-    onToggleIsSidebarOpen, isSidebarOpen, classes,
+    classes, isSidebarOpen, onToggleIsSidebarOpen,
   } = props;
 
   return (
@@ -41,6 +42,7 @@ const App = (props) => {
         >
           <Router />
           <CustomizedSnackbars />
+          <ConnectedSpinnerContainer />
         </div>
       </React.Fragment>
     </div>
@@ -49,17 +51,19 @@ const App = (props) => {
 
 App.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
-  onToggleIsSidebarOpen: PropTypes.func.isRequired,
   isSidebarOpen: PropTypes.bool.isRequired,
+  onToggleIsSidebarOpen: PropTypes.func.isRequired,
 };
 
 App.propTypes = {
   classes: PropTypes.shape({}),
-  onToggleIsSidebarOpen: PropTypes.func,
   isSidebarOpen: PropTypes.bool,
+  onToggleIsSidebarOpen: PropTypes.func,
 };
 
-const mapStateToProps = ({ isSidebarOpen }) => ({
+const mapStateToProps = ({
+  isSidebarOpen,
+}) => ({
   isSidebarOpen,
 });
 
@@ -67,8 +71,10 @@ const mapDispatchToProps = dispatch => ({
   onToggleIsSidebarOpen: currentState => () => dispatch(handleToggleIsSidebarOpen(!currentState)),
 });
 
-export default fp.compose(
+const ConnectedApp = fp.compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
 )(App);
+
+export default ConnectedApp;
