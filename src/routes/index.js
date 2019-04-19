@@ -15,10 +15,12 @@ const RouterComponent = (props) => {
 };
 
 RouterComponent.defaultProps = {
+  classes: PropTypes.shape({}).isRequired,
   model: PropTypes.shape({}).isRequired,
 };
 
 RouterComponent.propTypes = {
+  classes: PropTypes.shape({}),
   model: PropTypes.shape({}),
 };
 

@@ -79,12 +79,14 @@ class HomeContainer extends React.Component {
       .then(({ data }) => {
         const { message } = data;
         if (message) {
+          this.setState({ loading: false });
           notify({
             message,
             variant: 'warning',
             duration: 4000,
           });
         } else {
+          this.setState({ loading: false });
           notify({
             message: 'The file is successfully uploaded',
             variant: 'success',
@@ -115,12 +117,14 @@ class HomeContainer extends React.Component {
       .then(({ data }) => {
         const { message } = data;
         if (message) {
+          this.setState({ loading: false });
           notify({
             message,
             variant: 'warning',
             duration: 4000,
           });
         } else {
+          this.setState({ loading: false });
           notify({
             message: 'The file is successfully uploaded',
             variant: 'success',
