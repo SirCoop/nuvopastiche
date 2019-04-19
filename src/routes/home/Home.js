@@ -98,6 +98,7 @@ class HomeContainer extends React.Component {
           });
         }
       }).catch((error) => {
+        this.setState({ loading: false });
         notify({
           message: `${error}`,
           variant: 'error',
@@ -133,6 +134,7 @@ class HomeContainer extends React.Component {
           });
         }
       }).catch((error) => {
+        this.setState({ loading: false });
         notify({
           message: `${error}`,
           variant: 'error',
