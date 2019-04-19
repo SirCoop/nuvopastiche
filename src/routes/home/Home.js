@@ -45,7 +45,7 @@ class HomeContainer extends React.Component {
       emailValid: false,
       firstNameValid: false,
       lastNameValid: false,
-      loading: false,
+      loading: true,
       formObj: {
         firstName: '',
         lastName: '',

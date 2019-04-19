@@ -4,31 +4,17 @@ import { withStyles } from '@material-ui/core/styles';
 import Loader from 'react-loader-spinner';
 
 const styles = () => ({
-  root: {
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
-    width: '100%',
-    height: '100%',
-    background: 'black',
-    opacity: '.5',
-  },
-  loader: {
-    position: 'relative',
-    left: '25%',
-    top: '25%',
-  },
 });
 
 function Spinner(props) {
-  const { classes, loading } = props;
+  const { loading } = props;
   return (
     <React.Fragment>
       {
         loading
           ? (
-            <div className={classes.root}>
-              <div className={classes.loader}>
+            <div className="spinner-container">
+              <div className="spinner">
                 <Loader
                   type="Plane"
                   color="#00BFFF"
