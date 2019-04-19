@@ -39,7 +39,7 @@ const App = (props) => {
           [classes.sidebarIsClosed]: !isSidebarOpen,
         })}
         >
-          <Router />
+          <Router model={{}} />
           <CustomizedSnackbars />
         </div>
       </React.Fragment>
