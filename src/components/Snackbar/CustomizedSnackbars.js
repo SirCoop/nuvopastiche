@@ -22,7 +22,7 @@ class CustomizedSnackbars extends React.Component {
       open: false,
       message: '',
       variant: '',
-      duration: 3000,
+      duration: 4000,
     };
   }
 

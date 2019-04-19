@@ -11,8 +11,8 @@ import {
   Grid,
   withStyles,
 } from '@material-ui/core';
+import Spinner from '../../components/Spinner';
 import notify from '../../components/Snackbar/notify';
-import ProgressBar from '../../components/ProgressBar';
 import Form from '../../components/Form';
 import athenaService from '../../services/athena.service';
 
@@ -235,7 +235,6 @@ class HomeContainer extends React.Component {
                 className={classNames(classes.cardHeader)}
                 title="Nuvo Pastiche"
               />
-              <ProgressBar loading={loading} />
               <Form
                 activeStep={activeStep}
                 disableStart={disableStart}
@@ -251,6 +250,7 @@ class HomeContainer extends React.Component {
                 styleImageData={styleImageData}
                 startAthena={this.startAthena}
               />
+              <Spinner loading={loading} />
             </Card>
           </Grid>
           <Grid item xs={12} sm={4} />
