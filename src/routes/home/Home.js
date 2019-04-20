@@ -27,8 +27,8 @@ const styles = () => ({
     textAlign: 'center',
   },
   gridContainer: {
-    width: '100%',
-    padding: '2rem 0px 0px 0px',
+    // width: '100%',
+    // padding: '2rem 0px 0px 0px',
   },
   title: {
     fontSize: '2rem',
@@ -230,7 +230,7 @@ class HomeContainer extends React.Component {
     const isValid = firstNameValid && lastNameValid && emailValid;
     return (
       <React.Fragment>
-        <Grid container spacing={24}>
+        <Grid container spacing={16}>
           <Grid item xs={12} sm={4} />
           <Grid item xs={12} sm={4}>
             <Card className={classes.card}>

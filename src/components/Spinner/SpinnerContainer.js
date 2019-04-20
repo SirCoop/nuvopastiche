@@ -26,7 +26,7 @@ class SpinnerContainer extends React.Component {
 
   createSpinnerNode = () => (
     <React.Fragment>
-      <Grid container spacing={24}>
+      <Grid container spacing={16}>
         <Grid item xs={12} sm={4} />
         <Grid item xs={12} sm={4}>
           <NPSpinner />

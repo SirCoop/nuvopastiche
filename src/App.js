@@ -10,13 +10,7 @@ import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 
 const styles = {
-  sidebarIsOpen: {
-    // transition: 'all .2s',
-    // paddingLeft: 225,
-  },
-  sidebarIsClosed: {
-    // transition: 'all .2s',
-    // paddingLeft: 75,
+  root: {
   },
 };
 

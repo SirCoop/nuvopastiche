@@ -75,7 +75,7 @@ class Form extends React.Component {
     } = this.props;
     return (
       <form className={classes.form}>
-        <Grid container spacing={24} className={classes.gridContainer}>
+        <Grid container spacing={16} className={classes.gridContainer}>
           <Grid item xs={6}>
             <TextField
               label="First Name"
