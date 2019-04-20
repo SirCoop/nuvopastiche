@@ -8,6 +8,7 @@ import './styles/index.css';
 import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
+import PrimarySearchAppBar from './components/AppBar';
 
 const styles = {
   root: {
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <div>
       <React.Fragment>
+        <PrimarySearchAppBar />
         <Router />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
