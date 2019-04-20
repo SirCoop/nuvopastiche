@@ -128,7 +128,7 @@ const styles = theme => ({
 
 class PrimarySearchAppBar extends React.Component {
   state = {
-    open: true,
+    open: false,
   };
 
   handleDrawerOpen = () => {
