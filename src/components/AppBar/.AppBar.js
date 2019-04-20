@@ -1,26 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import InputBase from '@material-ui/core/InputBase';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
 
@@ -28,56 +26,31 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
   },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
+  appBar: {
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
   },
   menuButton: {
-    marginLeft: 12,
     marginRight: 20,
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
   },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
+  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
   },
   search: {
     position: 'relative',
@@ -118,6 +91,12 @@ const styles = theme => ({
       width: 200,
     },
   },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
+  },
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -128,42 +107,38 @@ const styles = theme => ({
 
 class PrimarySearchAppBar extends React.Component {
   state = {
-    open: true,
+    mobileOpen: false,
   };
 
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
+  items = [
+    {
+      text: 'Gallery',
+      icon: <MailIcon />,
+    },
+    {
+      text: 'About',
+      icon: <InboxIcon />,
+    },
+    {
+      text: 'Contact',
+      icon: <MailIcon />,
+    }
+  ];
 
-  handleDrawerClose = () => {
-    this.setState({ open: false });
+  handleDrawerToggle = () => {
+    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
   render() {
     const { classes, theme } = this.props;
-    const { open } = this.state;
-
-    const items = [
-      {
-        text: 'Gallery',
-        icon: <MailIcon />,
-      },
-      {
-        text: 'About',
-        icon: <InboxIcon />,
-      },
-      {
-        text: 'Contact',
-        icon: <MailIcon />,
-      },
-    ];
+    const { mobileOpen } = this.state;
 
     const drawer = (
       <div>
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          {items.map(item => (
+          {this.items.map(item => (
             <ListItem button key={item.text}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
@@ -176,18 +151,13 @@ class PrimarySearchAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-        >
-          <Toolbar disableGutters={!open}>
+        <AppBar position="fixed" className={classes.appBar}>
+          <Toolbar>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
+              onClick={this.handleDrawerToggle}
+              className={classes.menuButton}
             >
               <MenuIcon />
             </IconButton>
@@ -207,33 +177,47 @@ class PrimarySearchAppBar extends React.Component {
               />
             </div>
             <div className={classes.grow} />
+            {/* <div className={classes.sectionDesktop}>
+              <IconButton
+                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleProfileMenuOpen}
+                color="inherit"
+              />
+            </div> */}
           </Toolbar>
         </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </div>
-          <Divider />
-          {drawer}
-        </Drawer>
-        <main
-          className={classNames(classes.content, {
-            [classes.contentShift]: open,
-          })}
-        >
-          <div className={classes.drawerHeader} />
+        <nav className={classes.drawer}>
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Hidden smUp implementation="css">
+            <Drawer
+              variant="temporary"
+              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+              open={mobileOpen}
+              onClose={this.handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <Drawer
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              variant="permanent"
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+        </nav>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
           <Typography paragraph>
-            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'}
+            {'Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla'}
           </Typography>
         </main>
       </div>
