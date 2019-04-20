@@ -1,49 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
-import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import './styles/index.css';
-import Sidebar from './components/Sidebar';
 import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
-import handleToggleIsSidebarOpen from './redux/actions/toggleSidebar';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 
 const styles = {
   sidebarIsOpen: {
-    transition: 'all .2s',
-    paddingLeft: 225,
+    // transition: 'all .2s',
+    // paddingLeft: 225,
   },
   sidebarIsClosed: {
-    transition: 'all .2s',
-    paddingLeft: 75,
+    // transition: 'all .2s',
+    // paddingLeft: 75,
   },
 };
 
-const App = (props) => {
-  const {
-    classes, isSidebarOpen, onToggleIsSidebarOpen,
-  } = props;
-
+const App = () => {
   return (
     <div>
       <React.Fragment>
-        <Sidebar
-          isSidebarOpen={isSidebarOpen}
-          onToggleSidebar={onToggleIsSidebarOpen(isSidebarOpen)}
-        />
-        <div className={classnames({
-          [classes.sidebarIsOpen]: isSidebarOpen,
-          [classes.sidebarIsClosed]: !isSidebarOpen,
-        })}
-        >
-          <Router />
-          <CustomizedSnackbars />
-          <ConnectedSpinnerContainer />
-        </div>
+        <Router />
+        <CustomizedSnackbars />
+        <ConnectedSpinnerContainer />
       </React.Fragment>
     </div>
   );
@@ -51,30 +34,20 @@ const App = (props) => {
 
 App.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
-  isSidebarOpen: PropTypes.bool.isRequired,
-  onToggleIsSidebarOpen: PropTypes.func.isRequired,
 };
 
 App.propTypes = {
   classes: PropTypes.shape({}),
-  isSidebarOpen: PropTypes.bool,
-  onToggleIsSidebarOpen: PropTypes.func,
 };
 
-const mapStateToProps = ({
-  isSidebarOpen,
-}) => ({
-  isSidebarOpen,
-});
+const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  onToggleIsSidebarOpen: currentState => () => dispatch(handleToggleIsSidebarOpen(!currentState)),
-});
+const mapDispatchToProps = () => ({});
 
 const ConnectedApp = fp.compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps),
 )(App);
 
 export default ConnectedApp;
