@@ -13,15 +13,13 @@ const styles = theme => ({
 });
 
 class ForceLayout extends React.Component {
-  state = {};
-
   // some colour variables
   tcBlack = '#130C0E';
 
   // rest of vars
-  w = 960;
+  w = '';
 
-  h = 800;
+  h = '';
 
   maxNodeSize = 50;
 
@@ -41,7 +39,17 @@ class ForceLayout extends React.Component {
 
   node = '';
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
+
   componentDidMount() {
+    const { height, width } = this.props;
+    this.h = height;
+    this.w = width;
     this.force = d3.layout.force();
     this.vis = d3.select('#vis').append('svg').attr('width', this.w).attr('height', this.h);
     this.loadImages();
@@ -225,9 +233,18 @@ class ForceLayout extends React.Component {
   }
 }
 
-ForceLayout.propTypes = {
+ForceLayout.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  height: PropTypes.number.isRequired,
   theme: PropTypes.shape({}).isRequired,
+  width: PropTypes.number.isRequired,
+};
+
+ForceLayout.propTypes = {
+  classes: PropTypes.shape({}),
+  height: PropTypes.number,
+  theme: PropTypes.shape({}),
+  width: PropTypes.number,
 };
 
 export default withStyles(styles, { withTheme: true })(ForceLayout);

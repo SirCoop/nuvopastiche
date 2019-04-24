@@ -9,38 +9,68 @@ import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 import PrimarySearchAppBar from './components/AppBar';
-import ForceLayout from './components/D3/ForceLayout';
+// Redux
+import deviceActionCreators from '../../redux/actions/device/deviceActionCreators';
 
 const styles = {
   root: {
   },
 };
 
-const App = () => {
-  return (
-    <div>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
+
+  componentDidMount() {
+    this.setScreenSize();
+  }
+
+  setScreenSize = () => {
+    const { setScreenDimensions } = this.props;
+    const screenDimensions = {
+      height: window.screen.availHeight,
+      width: window.screen.availWidth,
+    };
+    setScreenDimensions(screenDimensions);
+  };
+
+  render() {
+    return (
       <React.Fragment>
         <PrimarySearchAppBar />
         <Router />
-        <ForceLayout />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
       </React.Fragment>
-    </div>
-  );
-};
+    );
+  }
+}
 
 App.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  setScreenDimensions: PropTypes.func.isRequired,
 };
 
 App.propTypes = {
   classes: PropTypes.shape({}),
+  setScreenDimensions: PropTypes.func,
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({
+  screenDimensions,
+}) => ({
+  screenDimensions,
+});
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  setScreenDimensions: (screenDimensions) => {
+    dispatch(deviceActionCreators.setScreenDimensions(screenDimensions));
+  },
+});
 
 const ConnectedApp = fp.compose(
   withRouter,
