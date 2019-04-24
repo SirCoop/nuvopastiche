@@ -6,7 +6,8 @@ const marvelImages = {
       name: 'Heroes',
       children: [
         {
-          hero: 'Spider-Man',
+          hero: 'Spider Man',
+          elName: 'spiderMan',
           name: 'Peter Benjamin Parker',
           link: 'http://marvel.com/characters/54/spider-man',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png',
@@ -14,6 +15,7 @@ const marvelImages = {
         },
         {
           hero: 'CAPTAIN MARVEL',
+          elName: 'captainMarvel',
           name: 'Carol Danvers',
           link: 'http://marvel.com/characters/9/captain_marvel',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_captainmarvel.png',
@@ -21,6 +23,7 @@ const marvelImages = {
         },
         {
           hero: 'HULK',
+          elName: 'hulk',
           name: 'Robert Bruce Banner',
           link: 'http://marvel.com/characters/25/hulk',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_hulk.png',
@@ -28,6 +31,7 @@ const marvelImages = {
         },
         {
           hero: 'Black Widow',
+          elName: 'blackWidow',
           name: 'Natalia \'Natasha\' Alianovna Romanova',
           link: 'http://marvel.com/characters/6/black_widow',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_blackwidow.png',
@@ -35,6 +39,7 @@ const marvelImages = {
         },
         {
           hero: 'Daredevil',
+          elName: 'dareDevil',
           name: 'Matthew Michael Murdock',
           link: 'http://marvel.com/characters/11/daredevil',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_daredevil.png',
@@ -42,6 +47,7 @@ const marvelImages = {
         },
         {
           hero: 'Wolverine',
+          elName: 'wolverine',
           name: 'James Howlett',
           link: 'http://marvel.com/characters/66/wolverine',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_wolverine.png',
@@ -49,6 +55,7 @@ const marvelImages = {
         },
         {
           hero: 'Captain America',
+          elName: 'captainAmerica',
           name: 'Steven Rogers',
           link: 'http://marvel.com/characters/8/captain_america',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_captainamerica.png',
@@ -56,6 +63,7 @@ const marvelImages = {
         },
         {
           hero: 'Iron Man',
+          elName: 'ironMan',
           name: 'Anthony Edward \'Tony\' Stark',
           link: 'http://marvel.com/characters/29/iron_man',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_ironman.png',
@@ -63,6 +71,7 @@ const marvelImages = {
         },
         {
           hero: 'THOR',
+          elName: 'thor',
           name: 'Thor Odinson',
           link: 'http://marvel.com/characters/60/thor',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_thor.png',
@@ -74,7 +83,8 @@ const marvelImages = {
       name: 'Villains',
       children: [
         {
-          hero: 'Dr. Doom',
+          hero: 'Dr Doom',
+          elName: 'drDoom',
           name: 'Victor von Doom',
           link: 'http://marvel.com/characters/13/dr_doom',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/drdoom.png',
@@ -82,6 +92,7 @@ const marvelImages = {
         },
         {
           hero: 'Mystique',
+          elName: 'mystique',
           name: 'Unrevealed',
           link: 'http://marvel.com/characters/1552/mystique',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/mystique.png',
@@ -89,6 +100,7 @@ const marvelImages = {
         },
         {
           hero: 'Red Skull',
+          elName: 'redSkull',
           name: 'Johann Shmidt',
           link: 'http://marvel.com/characters/1901/red_skull',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/redskull.png',
@@ -96,6 +108,7 @@ const marvelImages = {
         },
         {
           hero: 'Ronan',
+          elName: 'ronan',
           name: 'Ronan',
           link: 'http://marvel.com/characters/49/ronan',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/ronan.png',
@@ -103,6 +116,7 @@ const marvelImages = {
         },
         {
           hero: 'Magneto',
+          elName: 'magneto',
           name: 'Max Eisenhardt',
           link: 'http://marvel.com/characters/35/magneto',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/magneto.png',
@@ -110,6 +124,7 @@ const marvelImages = {
         },
         {
           hero: 'Thanos',
+          elName: 'thanos',
           name: 'Thanos',
           link: 'http://marvel.com/characters/58/thanos',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/thanos.png',
@@ -117,6 +132,7 @@ const marvelImages = {
         },
         {
           hero: 'Black Cat',
+          elName: 'blackCat',
           name: 'Felicia Hardy',
           link: 'http://marvel.com/characters/271/black_cat',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/blackcat.png',
@@ -129,6 +145,7 @@ const marvelImages = {
       children: [
         {
           hero: 'Avengers',
+          elName: 'avengers',
           name: '',
           link: 'http://marvel.com/characters/68/avengers',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/avengers.png',
@@ -136,6 +153,7 @@ const marvelImages = {
         },
         {
           hero: 'Guardians of the Galaxy',
+          elName: 'guardiansOfTheGalaxy',
           name: '',
           link: 'http://marvel.com/characters/70/guardians_of_the_galaxy',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/gofgalaxy.png',
@@ -143,13 +161,15 @@ const marvelImages = {
         },
         {
           hero: 'Defenders',
+          elName: 'defenders',
           name: '',
           link: 'http://marvel.com/characters/534/defenders',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/defenders.png',
           size: 40000,
         },
         {
-          hero: 'X-Men',
+          hero: 'X Men',
+          elName: 'xMen',
           name: '',
           link: 'http://marvel.com/characters/71/x-men',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/xmen.png',
@@ -157,6 +177,7 @@ const marvelImages = {
         },
         {
           hero: 'Fantastic Four',
+          elName: 'fantasticFour',
           name: '',
           link: 'http://marvel.com/characters/69/fantastic_four',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/fantasticfour.png',
@@ -164,6 +185,7 @@ const marvelImages = {
         },
         {
           hero: 'Inhumans',
+          elName: 'inHumans',
           name: '',
           link: 'http://marvel.com/characters/1040/inhumans',
           img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/inhumans.png',

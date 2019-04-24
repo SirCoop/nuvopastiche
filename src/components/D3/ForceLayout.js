@@ -109,22 +109,20 @@ class ForceLayout extends React.Component {
       .attr('y', d => -25)
       .attr('height', 50)
       .attr('width', 50)
-      .attr('id', d => `${d.hero}-${d.id}`);
+      .attr('id', d => `${d.elName}-${d.id}`);
 
     // Append hero text
     images.on('click', (d) => {
+      console.log('d: ', d);
       // d3.select('h1').html(d.hero);
       // d3.select('h2').html(d.name);
       // d3.select('h3').html(`Take me to ' + '<a href='' + ${d.link} + '' >'  + ${d.hero} + ' web page ⇢'+ '</a>`);
     });
 
-    // TODO: Find reference to dom element onHover. 'this' in reference code is the element,
-    //       but references this react class in this file. 
-
     // make the image grow a little on mouse over and add the text details on click
     images.on('mouseenter', (d) => {
       // select element in current context
-      const image = d3.select(`#${d.hero}-${d.id}`);
+      const image = d3.select(`#${d.elName}-${d.id}`);
       // select needs a reference to this dom element, not the image object
       image
         .transition()
@@ -135,7 +133,7 @@ class ForceLayout extends React.Component {
     });
     // set back
     images.on('mouseleave', (d) => {
-      const image = d3.select(`#${d.hero}-${d.id}`);
+      const image = d3.select(`#${d.elName}-${d.id}`);
       image
         .transition()
         .attr('x', d => -25)
@@ -189,7 +187,6 @@ class ForceLayout extends React.Component {
    * Toggle children on click.
   */
   click = (d) => {
-    console.log('click: ', d);
     if (d.children) {
       d._children = d.children;
       d.children = null;
