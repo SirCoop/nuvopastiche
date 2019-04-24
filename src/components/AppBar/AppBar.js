@@ -232,8 +232,11 @@ class PrimarySearchAppBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Typography paragraph>
-            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'}
+          <Typography paragraph variant="h2">
+            {'nu·vo (no͞oˈvō) - modern or up to date.'}
+          </Typography>
+          <Typography paragraph variant="h2">
+            {'pas·tiche (paˈstēSH) - an artistic work imitating the style of another.'}
           </Typography>
         </main>
       </div>

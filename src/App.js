@@ -9,6 +9,7 @@ import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 import PrimarySearchAppBar from './components/AppBar';
+import ForceLayout from './components/D3/ForceLayout';
 
 const styles = {
   root: {
@@ -21,6 +22,7 @@ const App = () => {
       <React.Fragment>
         <PrimarySearchAppBar />
         <Router />
+        <ForceLayout />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
       </React.Fragment>
