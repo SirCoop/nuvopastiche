@@ -124,10 +124,7 @@ class ForceLayout extends React.Component {
     // make the image grow a little on mouse over and add the text details on click
     images.on('mouseenter', (d) => {
       // select element in current context
-      // console.log('d: ', d3.select(`#${d.hero}-${d.id}`)[0][0]);
-      console.log('react find: ', d3.select(`#${d.hero}-${d.id}`)[0]);
-
-      const image = d3.select(`#${d.hero}-${d.id}`)[0];
+      const image = d3.select(`#${d.hero}-${d.id}`);
       // select needs a reference to this dom element, not the image object
       image
         .transition()
@@ -138,7 +135,7 @@ class ForceLayout extends React.Component {
     });
     // set back
     images.on('mouseleave', (d) => {
-      const image = d3.select(`#${d.hero}-${d.id}`)[0];
+      const image = d3.select(`#${d.hero}-${d.id}`);
       image
         .transition()
         .attr('x', d => -25)
@@ -192,6 +189,7 @@ class ForceLayout extends React.Component {
    * Toggle children on click.
   */
   click = (d) => {
+    console.log('click: ', d);
     if (d.children) {
       d._children = d.children;
       d.children = null;
