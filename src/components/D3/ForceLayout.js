@@ -118,13 +118,18 @@ class ForceLayout extends React.Component {
       // d3.select('h3').html(`Take me to ' + '<a href='' + ${d.link} + '' >'  + ${d.hero} + ' web page ⇢'+ '</a>`);
     });
 
+    // TODO: Find reference to dom element onHover. 'this' in reference code is the element,
+    //       but references this react class in this file. 
+
     // make the image grow a little on mouse over and add the text details on click
     images.on('mouseenter', (d) => {
       // select element in current context
-      console.log('d: ', d3.select(`#${d.hero}-${d.id}`)[0][0]);
-      // const image = d3.select(`#${d.hero}-${d.id}`)[0];
+      // console.log('d: ', d3.select(`#${d.hero}-${d.id}`)[0][0]);
+      console.log('react find: ', d3.select(`#${d.hero}-${d.id}`)[0]);
+
+      const image = d3.select(`#${d.hero}-${d.id}`)[0];
       // select needs a reference to this dom element, not the image object
-      d3.select(`#${d.hero}-${d.id}`)[0][0]
+      image
         .transition()
         .attr('x', d => -60)
         .attr('y', d => -60)
@@ -133,7 +138,8 @@ class ForceLayout extends React.Component {
     });
     // set back
     images.on('mouseleave', (d) => {
-      d3.select(d)
+      const image = d3.select(`#${d.hero}-${d.id}`)[0];
+      image
         .transition()
         .attr('x', d => -25)
         .attr('y', d => -25)
