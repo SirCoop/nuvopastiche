@@ -2,13 +2,10 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import * as d3 from 'd3';
 import { withStyles } from '@material-ui/core/styles';
 
-import marvelImages from './marvel';
-
-const styles = theme => ({
+const styles = () => ({
   root: {},
 });
 
@@ -56,7 +53,8 @@ class ForceLayout extends React.Component {
   }
 
   loadImages = () => {
-    this.root = marvelImages;
+    const { data } = this.props;
+    this.root = data;
     this.root.fixed = true;
     this.root.x = this.w / 2;
     this.root.y = this.h / 4;
@@ -213,7 +211,7 @@ class ForceLayout extends React.Component {
     let i = 0;
 
     const recurse = (node) => {
-      if (node.children) { node.children.forEach(recurse); }      
+      if (node.children) { node.children.forEach(recurse); }
       if (!node.id) { node.id = ++i; }
       nodes.push(node);
     };
@@ -223,7 +221,7 @@ class ForceLayout extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className={classes.root}>
@@ -235,13 +233,15 @@ class ForceLayout extends React.Component {
 
 ForceLayout.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
   height: PropTypes.number.isRequired,
-  theme: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}),
   width: PropTypes.number.isRequired,
 };
 
 ForceLayout.propTypes = {
   classes: PropTypes.shape({}),
+  data: PropTypes.shape({}),
   height: PropTypes.number,
   theme: PropTypes.shape({}),
   width: PropTypes.number,

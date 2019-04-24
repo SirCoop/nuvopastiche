@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import fp from 'lodash/fp';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-
 import marvelImages from './marvel';
 import ForceLayout from './ForceLayout';
 
-const styles = theme => ({
+const styles = () => ({
   root: {},
 });
 
@@ -19,15 +20,14 @@ class ForceLayoutContainer extends React.Component {
   }
 
   componentDidMount() {
-    
   }
 
   render() {
-    const { classes, theme } = this.props;
-
+    const { classes, screenDimensions: { height, width } } = this.props;
+    const data = marvelImages;
     return (
       <React.Fragment>
-        <ForceLayout height={height} width={width} />
+        <ForceLayout height={height} width={width} data={data} className={classes.root} />
       </React.Fragment>
     );
   }
@@ -35,12 +35,28 @@ class ForceLayoutContainer extends React.Component {
 
 ForceLayoutContainer.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  screenDimensions: PropTypes.shape({}).isRequired,
   theme: PropTypes.shape({}),
 };
 
 ForceLayoutContainer.propTypes = {
   classes: PropTypes.shape({}),
+  screenDimensions: PropTypes.shape({}),
   theme: PropTypes.shape({}),
 };
 
-export default withStyles(styles, { withTheme: true })(ForceLayoutContainer);
+const mapStateToProps = ({
+  screenDimensions,
+}) => ({
+  screenDimensions,
+});
+
+const mapDispatchToProps = () => ({});
+
+const ConnectedForceLayoutContainer = fp.compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles, { withTheme: true }),
+)(ForceLayoutContainer);
+
+export default ConnectedForceLayoutContainer;

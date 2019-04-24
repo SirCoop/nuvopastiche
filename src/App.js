@@ -10,7 +10,7 @@ import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 import PrimarySearchAppBar from './components/AppBar';
 // Redux
-import deviceActionCreators from '../../redux/actions/device/deviceActionCreators';
+import deviceActionCreators from './redux/actions/device/deviceActionCreators';
 
 const styles = {
   root: {
