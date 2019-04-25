@@ -1,25 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import {
+  AppBar,
+  CssBaseline,
+  Divider,
+  Drawer,
+  Grid,
+  IconButton,
+  InputBase,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const drawerWidth = 240;
@@ -41,6 +44,9 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+  definitions: {
+    textAlign: 'center',
   },
   menuButton: {
     marginLeft: 12,
@@ -232,12 +238,21 @@ class PrimarySearchAppBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Typography paragraph variant="h5">
-            {'nu·vo (no͞oˈvō) - modern or up to date.'}
+
+          {/* <Grid container spacing={24} alignItems="center" justify="center"> */}
+          {/* <Grid item xs={12} sm={6}> */}
+          <Typography variant="h6">
+            <b>nu·vo&nbsp;</b>
+            {'(no͞oˈvō) - modern or up to date.'}
           </Typography>
-          <Typography paragraph variant="h5">
-            {'pas·tiche (paˈstēSH) - an artistic work imitating the style of another.'}
+          {/* </Grid> */}
+          {/* <Grid item xs={12} sm={6}> */}
+          <Typography variant="h6">
+            <b>pas·tiche&nbsp;</b>
+            {'(paˈstēSH) - an artistic work imitating the style of another.'}
           </Typography>
+          {/* </Grid> */}
+          {/* </Grid> */}
         </main>
       </div>
     );
