@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
-import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {

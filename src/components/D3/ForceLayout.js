@@ -2,6 +2,8 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import PropTypes from 'prop-types';
+import fp from 'lodash/fp';
+import { withRouter } from 'react-router-dom';
 import * as d3 from 'd3';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -120,6 +122,9 @@ class ForceLayout extends React.Component {
     // Append hero text
     images.on('click', (d) => {
       console.log('d: ', d);
+      if (d.name === 'NuvoPastiche') {
+
+      }
       // d3.select('h1').html(d.hero);
       // d3.select('h2').html(d.name);
       // d3.select('h3').html(`Take me to ' + '<a href='' + ${d.link} + '' >'  + ${d.hero} + ' web page ⇢'+ '</a>`);
@@ -247,4 +252,7 @@ ForceLayout.propTypes = {
   width: PropTypes.number,
 };
 
-export default withStyles(styles, { withTheme: true })(ForceLayout);
+export default fp.compose(
+  withRouter,
+  withStyles(styles, { withTheme: true }),
+)(ForceLayout);

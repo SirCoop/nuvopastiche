@@ -1,6 +1,7 @@
 const marvelImages = {
   name: 'Nuvo Pastiche',
-  img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png',
+  img: 'src/assets/np_logo.png',
+  link: '/new-pastiche',
   children: [
     {
       name: 'Heroes',
