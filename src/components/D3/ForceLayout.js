@@ -113,8 +113,8 @@ class ForceLayout extends React.Component {
       .attr('xlink:href', d => d.img)
       .attr('x', d => -25)
       .attr('y', d => -25)
-      .attr('height', 50)
-      .attr('width', 50)
+      .attr('height', 100)
+      .attr('width', 100)
       .attr('id', d => `${d.elName}-${d.id}`);
 
     // Append hero text
@@ -134,8 +134,8 @@ class ForceLayout extends React.Component {
         .transition()
         .attr('x', d => -60)
         .attr('y', d => -60)
-        .attr('height', 100)
-        .attr('width', 100);
+        .attr('height', 200)
+        .attr('width', 200);
     });
     // set back
     images.on('mouseleave', (d) => {
@@ -144,8 +144,8 @@ class ForceLayout extends React.Component {
         .transition()
         .attr('x', d => -25)
         .attr('y', d => -25)
-        .attr('height', 50)
-        .attr('width', 50);
+        .attr('height', 100)
+        .attr('width', 100);
     });
 
     // Append hero name on roll over next to the node as well

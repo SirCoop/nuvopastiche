@@ -1,9 +1,10 @@
 const marvelImages = {
-  name: 'marvel',
+  name: 'Nuvo Pastiche',
   img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png',
   children: [
     {
       name: 'Heroes',
+      img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png',
       children: [
         {
           hero: 'Spider Man',
@@ -81,6 +82,7 @@ const marvelImages = {
     },
     {
       name: 'Villains',
+      img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png',
       children: [
         {
           hero: 'Dr Doom',
@@ -142,6 +144,7 @@ const marvelImages = {
     },
     {
       name: 'Teams',
+      img: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/marvel.png',
       children: [
         {
           hero: 'Avengers',

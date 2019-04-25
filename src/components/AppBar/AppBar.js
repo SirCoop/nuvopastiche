@@ -238,21 +238,14 @@ class PrimarySearchAppBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-
-          {/* <Grid container spacing={24} alignItems="center" justify="center"> */}
-          {/* <Grid item xs={12} sm={6}> */}
           <Typography variant="h6">
             <b>nu·vo&nbsp;</b>
             {'(no͞oˈvō) - modern or up to date.'}
           </Typography>
-          {/* </Grid> */}
-          {/* <Grid item xs={12} sm={6}> */}
           <Typography variant="h6">
             <b>pas·tiche&nbsp;</b>
             {'(paˈstēSH) - an artistic work imitating the style of another.'}
           </Typography>
-          {/* </Grid> */}
-          {/* </Grid> */}
         </main>
       </div>
     );

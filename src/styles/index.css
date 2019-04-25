@@ -23,7 +23,7 @@ body {
 
 path.link {
   fill: none;
-  stroke-width: 2px;
+  stroke-width: 3px;
 }
 .node:not(:hover) .nodetext {
   display: none;
