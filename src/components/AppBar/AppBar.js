@@ -165,12 +165,12 @@ class PrimarySearchAppBar extends React.Component {
       {
         text: 'About',
         icon: <Info />,
-        link: '/gallery',
+        link: '/about',
       },
       {
         text: 'Contact',
         icon: <MailIcon />,
-        link: '/gallery',
+        link: '/contact',
       },
     ];
 
