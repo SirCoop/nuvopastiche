@@ -22,11 +22,11 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import Collections from '@material-ui/icons/Collections';
 import Info from '@material-ui/icons/Info';
+import Home from '@material-ui/icons/Home';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const drawerWidth = 240;
@@ -157,6 +157,11 @@ class PrimarySearchAppBar extends React.Component {
     const { open } = this.state;
 
     const items = [
+      {
+        text: 'Home',
+        icon: <Home />,
+        link: '/home',
+      },
       {
         text: 'Gallery',
         icon: <Collections />,
