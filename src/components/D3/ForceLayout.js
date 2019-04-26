@@ -1,7 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
@@ -123,11 +122,6 @@ class ForceLayout extends React.Component {
     // Append hero text
     images.on('click', (d) => {
       console.log('d: ', d);
-      if (d.name === 'NuvoPastiche') {
-        console.log('d: ', d);
-        // TODO: redirect to new-pastiche page
-        return <Redirect to="/gallery" />;
-      }
       // d3.select('h1').html(d.hero);
       // d3.select('h2').html(d.name);
       // d3.select('h3').html(`Take me to ' + '<a href='' + ${d.link} + '' >'  + ${d.hero} + ' web page ⇢'+ '</a>`);
