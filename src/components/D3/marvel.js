@@ -1,5 +1,5 @@
 const marvelImages = {
-  name: 'Nuvo Pastiche',
+  name: 'NuvoPastiche',
   img: 'src/assets/np_logo.png',
   link: '/new-pastiche',
   children: [
