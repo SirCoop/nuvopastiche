@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   AppBar,
   CssBaseline,
@@ -9,6 +10,7 @@ import {
   Grid,
   IconButton,
   InputBase,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -23,6 +25,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
+import Collections from '@material-ui/icons/Collections';
+import Info from '@material-ui/icons/Info';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const drawerWidth = 240;
@@ -84,6 +88,9 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },
+  navigationLink: {
+    textDecoration: 'none',
   },
   search: {
     position: 'relative',
@@ -152,15 +159,18 @@ class PrimarySearchAppBar extends React.Component {
     const items = [
       {
         text: 'Gallery',
-        icon: <MailIcon />,
+        icon: <Collections />,
+        link: '/gallery',
       },
       {
         text: 'About',
-        icon: <InboxIcon />,
+        icon: <Info />,
+        link: '/gallery',
       },
       {
         text: 'Contact',
         icon: <MailIcon />,
+        link: '/gallery',
       },
     ];
 
@@ -170,10 +180,12 @@ class PrimarySearchAppBar extends React.Component {
         <Divider />
         <List>
           {items.map(item => (
-            <ListItem button key={item.text}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
+            <Link component={RouterLink} to={item.link} key={item.text} underline="none">
+              <ListItem button key={item.text}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} className={classes.navigationLink} />
+              </ListItem>
+            </Link>
           ))}
         </List>
       </div>
@@ -197,9 +209,9 @@ class PrimarySearchAppBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+            <Link component={RouterLink} to="/" className={classNames(classes.title)} underline="none" variant="h6" color="inherit" noWrap>
               {'Nuvo Pastiche'}
-            </Typography>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

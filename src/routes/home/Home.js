@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import notify from '../../components/Snackbar/notify';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
-import ConnectedForceLayoutContainer from '../../components/D3/ForceLayoutContainer';
+import ConnectedFormContainer from '../../components/Form';
 
 const styles = () => ({
   root: {
@@ -30,7 +30,7 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <ConnectedForceLayoutContainer />
+        <ConnectedFormContainer />
       </React.Fragment>
     );
   }
