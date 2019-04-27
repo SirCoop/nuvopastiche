@@ -4,8 +4,6 @@ import _ from 'lodash';
 import {
   withStyles,
 } from '@material-ui/core';
-// import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import '../../styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
 const styles = () => ({
