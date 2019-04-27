@@ -47,7 +47,16 @@ class HomeContainer extends React.Component {
             <Card className={classes.card}>
               <CardContent>
                 <Grid container className={classes.root}>
-                  <Grid item xs={12} sm={6}><ConnectedIntroduction /></Grid>
+                  <Grid
+                    container
+                    item
+                    xs={12}
+                    sm={6}
+                    align="center"
+                    justify="center"
+                  >
+                    <ConnectedIntroduction />
+                  </Grid>
                   <Grid item xs={12} sm={6}>
                     <ConnectedFormContainer />
                     <div className={classes.quote}>

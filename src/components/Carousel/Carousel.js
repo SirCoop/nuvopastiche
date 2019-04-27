@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import {
-  Grid,
   withStyles,
 } from '@material-ui/core';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -11,7 +10,6 @@ import { Carousel } from 'react-responsive-carousel';
 const styles = () => ({
   root: {
   },
-  coop: {},
 });
 
 class NPCarousel extends Component {
@@ -35,6 +33,7 @@ class NPCarousel extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <Carousel infiniteLoop autoPlay swipeable width="80%">
         {this.generateImageDivs()}
