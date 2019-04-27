@@ -5,7 +5,12 @@ import fp from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
   Grid,
+  Typography,
   withStyles,
 } from '@material-ui/core';
 import notify from '../../components/Snackbar/notify';
@@ -33,15 +38,19 @@ class HomeContainer extends React.Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <Grid container className={classes.roote}>
-          <Grid item sm={2} />
-          <Grid item xs={12} sm={4}>
-            <ConnectedFormContainer />
+        <Grid container className={classes.root}>
+          <Grid item sm={3} />
+          <Grid item xs={12} sm={6}>
+            <Card className={classes.card}>
+              <CardContent>
+                <Grid container className={classes.root}>
+                  <Grid item xs={12} sm={6}><ConnectedIntroduction /></Grid>
+                  <Grid item xs={12} sm={6}><ConnectedFormContainer /></Grid>
+                </Grid>
+              </CardContent>
+            </Card>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <ConnectedIntroduction />
-          </Grid>
-          <Grid item sm={2} />
+          <Grid item sm={3} />
         </Grid>
       </React.Fragment>
     );

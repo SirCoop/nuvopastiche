@@ -255,14 +255,6 @@ class PrimarySearchAppBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Typography variant="h6">
-            <b>nu·vo&nbsp;</b>
-            {'(no͞oˈvō) - modern or up to date.'}
-          </Typography>
-          <Typography variant="h6">
-            <b>pas·tiche&nbsp;</b>
-            {'(paˈstēSH) - an artistic work imitating the style of another.'}
-          </Typography>
         </main>
       </div>
     );

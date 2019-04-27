@@ -39,6 +39,8 @@ class Introduction extends React.Component {
   componentDidMount() {}
 
   render() {
+    const { classes } = this.props;
+
     return (
       <React.Fragment>
         <NPCarousel images={this.images} />

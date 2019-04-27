@@ -11,6 +11,7 @@ import { Carousel } from 'react-responsive-carousel';
 const styles = () => ({
   root: {
   },
+  coop: {},
 });
 
 class NPCarousel extends Component {
@@ -23,7 +24,7 @@ class NPCarousel extends Component {
   componentDidMount() {}
 
   generateImageDivs = () => {
-    const { classes, images } = this.props;
+    const { images } = this.props;
     const imageHTML = images.map(item => (
       <div key={_.uniqueId(item.name)}>
         <img src={item.src} alt={item.name} />
@@ -35,7 +36,7 @@ class NPCarousel extends Component {
 
   render() {
     return (
-      <Carousel infiniteLoop autoPlay swipeable width={400}>
+      <Carousel infiniteLoop autoPlay swipeable width="80%">
         {this.generateImageDivs()}
       </Carousel>
     );

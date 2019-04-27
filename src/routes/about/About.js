@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Grid,
+  Typography,
   withStyles,
 } from '@material-ui/core';
 import notify from '../../components/Snackbar/notify';
@@ -27,9 +28,25 @@ class About extends React.Component {
   componentDidMount() {}
 
   render() {
+    const { classes } = this.props;
     return (
       <React.Fragment>
-        {'About this app...'}
+        <Grid container className={classes.root}>
+          <Grid item sm={2} />
+          <Grid item sm={4}>
+            <Typography variant="h6">
+              <b>nu·vo&nbsp;</b>
+              {'(no͞oˈvō) - modern or up to date.'}
+            </Typography>
+          </Grid>
+          <Grid item sm={4}>
+            <Typography variant="h6">
+              <b>pas·tiche&nbsp;</b>
+              {'(paˈstēSH) - an artistic work imitating the style of another.'}
+            </Typography>
+          </Grid>
+          <Grid item sm={2} />
+        </Grid>
       </React.Fragment>
     );
   }

@@ -28,9 +28,14 @@ class Gallery extends React.Component {
   componentDidMount() {}
 
   render() {
+    const { classes } = this.props;
     return (
       <React.Fragment>
-        <ConnectedForceLayoutContainer />
+        <Grid container className={classes.root}>
+          <Grid item xs={12} sm={12}>
+            <ConnectedForceLayoutContainer />
+          </Grid>
+        </Grid>
       </React.Fragment>
     );
   }
