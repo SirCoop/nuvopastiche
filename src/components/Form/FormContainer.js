@@ -26,6 +26,10 @@ const styles = () => ({
     backgroundColor: '#eee',
     textAlign: 'center',
   },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
   title: {
     fontSize: '2rem',
   },
@@ -226,36 +230,21 @@ class FormContainer extends React.Component {
     const isValid = firstNameValid && lastNameValid && emailValid;
     return (
       <React.Fragment>
-        <Grid container>
-          <Grid item xs={12} sm={4} />
-          <Grid item xs={12} sm={4}>
-            <Card className={classes.card}>
-              <CardHeader
-                classes={{
-                  title: classes.title,
-                }}
-                className={classNames(classes.cardHeader)}
-                title="Nuvo Pastiche"
-              />
-              <Form
-                activeStep={activeStep}
-                disableStart={disableStart}
-                formObj={formObj}
-                formValid={isValid}
-                handleArtImageUpload={this.onArtImageUpload}
-                handlePersonalImageUpload={this.onPersonalImageUpload}
-                handleInput={this.handleInput}
-                handleSliderInput={this.handleSliderInput}
-                personalImageData={personalImageData}
-                savedPersonalImage={savedPersonalImage}
-                savedArtImage={savedArtImage}
-                styleImageData={styleImageData}
-                startAthena={this.startAthena}
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={4} />
-        </Grid>
+        <Form
+          activeStep={activeStep}
+          disableStart={disableStart}
+          formObj={formObj}
+          formValid={isValid}
+          handleArtImageUpload={this.onArtImageUpload}
+          handlePersonalImageUpload={this.onPersonalImageUpload}
+          handleInput={this.handleInput}
+          handleSliderInput={this.handleSliderInput}
+          personalImageData={personalImageData}
+          savedPersonalImage={savedPersonalImage}
+          savedArtImage={savedArtImage}
+          styleImageData={styleImageData}
+          startAthena={this.startAthena}
+        />
       </React.Fragment>
     );
   }

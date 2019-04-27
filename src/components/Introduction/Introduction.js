@@ -5,20 +5,16 @@ import fp from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  Grid,
   withStyles,
 } from '@material-ui/core';
-import notify from '../../components/Snackbar/notify';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
-import ConnectedIntroduction from '../../components/Introduction';
-import ConnectedFormContainer from '../../components/Form';
 
 const styles = () => ({
   root: {
   },
 });
 
-class HomeContainer extends React.Component {
+class Introduction extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,24 +27,17 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Grid container>
-          <Grid item xs={12} sm={4} />
-          <Grid item xs={12} sm={4}>
-            <ConnectedIntroduction />
-            <ConnectedFormContainer />
-          </Grid>
-          <Grid item xs={12} sm={4} />
-        </Grid>
+        {'Intro'}
       </React.Fragment>
     );
   }
 }
 
-HomeContainer.defaultProps = {
+Introduction.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
 };
 
-HomeContainer.propTypes = {
+Introduction.propTypes = {
   classes: PropTypes.shape({}),
 };
 
@@ -64,10 +53,10 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ConnectedHomeContainer = fp.compose(
+const ConnectedIntroduction = fp.compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
-)(HomeContainer);
+)(Introduction);
 
-export default ConnectedHomeContainer;
+export default ConnectedIntroduction;
