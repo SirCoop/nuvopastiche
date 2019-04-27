@@ -7,7 +7,6 @@ import {
   CssBaseline,
   Divider,
   Drawer,
-  Grid,
   IconButton,
   InputBase,
   Link,
@@ -16,7 +15,6 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
   withStyles,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -72,10 +70,21 @@ const styles = theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    // my custom preference for responsive drawer height
+    minHeight: '10px',
+    // my custom preference for responsive drawer height
+    [theme.breakpoints.up('sm')]: {
+      minHeight: '64px',
+    },
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    // my custom preference for responsive content padding
+    padding: '2px',
+    // my custom preference for responsive content padding
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing.unit * 3,
+    },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -255,6 +264,7 @@ class PrimarySearchAppBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          {/* {'Test Header'} */}
         </main>
       </div>
     );
