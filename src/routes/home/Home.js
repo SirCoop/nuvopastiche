@@ -22,6 +22,9 @@ const styles = () => ({
   root: {
     marginTop: '1rem',
   },
+  quote: {
+    marginTop: '3rem',
+  },
 });
 
 class HomeContainer extends React.Component {
@@ -45,7 +48,17 @@ class HomeContainer extends React.Component {
               <CardContent>
                 <Grid container className={classes.root}>
                   <Grid item xs={12} sm={6}><ConnectedIntroduction /></Grid>
-                  <Grid item xs={12} sm={6}><ConnectedFormContainer /></Grid>
+                  <Grid item xs={12} sm={6}>
+                    <ConnectedFormContainer />
+                    <div className={classes.quote}>
+                      <Typography variant="body1" align="center">
+                        {'"Good artists copy. Great artists steal."'}
+                      </Typography>
+                      <Typography variant="body1" align="center">
+                        {'-- Picasso'}
+                      </Typography>
+                    </div>
+                  </Grid>
                 </Grid>
               </CardContent>
             </Card>
