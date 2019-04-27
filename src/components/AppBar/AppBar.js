@@ -185,7 +185,7 @@ class PrimarySearchAppBar extends React.Component {
         <Divider />
         <List>
           {items.map(item => (
-            <Link component={RouterLink} to={item.link} key={item.text} underline="none">
+            <Link component={RouterLink} to={item.link} key={item.text} underline="none" onClick={this.handleDrawerClose}>
               <ListItem button key={item.text}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} className={classes.navigationLink} />
