@@ -71,20 +71,20 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
     // my custom preference for responsive drawer height
-    minHeight: '10px',
+    // minHeight: '10px',
     // my custom preference for responsive drawer height
-    [theme.breakpoints.up('sm')]: {
-      minHeight: '64px',
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //   minHeight: '64px',
+    // },
   },
   content: {
     flexGrow: 1,
     // my custom preference for responsive content padding
-    padding: '2px',
+    // padding: '2px',
     // my custom preference for responsive content padding
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing.unit * 3,
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //   padding: theme.spacing.unit * 3,
+    // },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
