@@ -8,6 +8,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
+import NPCarousel from '../Carousel';
 
 const styles = () => ({
   root: {
@@ -15,6 +16,19 @@ const styles = () => ({
 });
 
 class Introduction extends React.Component {
+  images = [
+    {
+      src: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png',
+      name: 'Spiderman',
+      description: 'Spiderman',
+    },
+    {
+      src: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_ironman.png',
+      name: 'Tony Stark',
+      description: 'Iron Man',
+    },
+  ];
+
   constructor(props) {
     super(props);
 
@@ -27,7 +41,7 @@ class Introduction extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {'Intro'}
+        <NPCarousel images={this.images} />
       </React.Fragment>
     );
   }
