@@ -33,7 +33,6 @@ class NPCarousel extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
       <Carousel infiniteLoop autoPlay swipeable width="80%">
         {this.generateImageDivs()}
