@@ -15,6 +15,7 @@ import ConnectedFormContainer from '../../components/Form';
 
 const styles = () => ({
   root: {
+    marginTop: '1rem',
   },
 });
 
@@ -29,15 +30,18 @@ class HomeContainer extends React.Component {
   componentDidMount() {}
 
   render() {
+    const { classes } = this.props;
     return (
       <React.Fragment>
-        <Grid container>
-          <Grid item xs={12} sm={4} />
+        <Grid container className={classes.roote}>
+          <Grid item sm={2} />
           <Grid item xs={12} sm={4}>
-            <ConnectedIntroduction />
             <ConnectedFormContainer />
           </Grid>
-          <Grid item xs={12} sm={4} />
+          <Grid item xs={12} sm={4}>
+            <ConnectedIntroduction />
+          </Grid>
+          <Grid item sm={2} />
         </Grid>
       </React.Fragment>
     );

@@ -23,7 +23,7 @@ class NPCarousel extends Component {
   componentDidMount() {}
 
   generateImageDivs = () => {
-    const { images } = this.props;
+    const { classes, images } = this.props;
     const imageHTML = images.map(item => (
       <div key={_.uniqueId(item.name)}>
         <img src={item.src} alt={item.name} />
@@ -35,7 +35,7 @@ class NPCarousel extends Component {
 
   render() {
     return (
-      <Carousel infiniteLoop autoPlay swipeable>
+      <Carousel infiniteLoop autoPlay swipeable width={400}>
         {this.generateImageDivs()}
       </Carousel>
     );
