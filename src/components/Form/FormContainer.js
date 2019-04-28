@@ -40,7 +40,6 @@ class FormContainer extends React.Component {
     super(props);
 
     this.state = {
-      activeStep: 1,
       disableStart: false,
       emailValid: false,
       firstNameValid: false,
@@ -50,7 +49,7 @@ class FormContainer extends React.Component {
         lastName: '',
         email: '',
         fileName: '',
-        quality: 100,
+        intensity: 80,
       },
       personalImageData: {
         name: '',
@@ -158,10 +157,15 @@ class FormContainer extends React.Component {
   startAthena = () => {
     const { toggleSpinner } = this.props;
     toggleSpinner(true);
-    const { formObj: { firstName, lastName, email }, personalImageData, styleImageData } = this.state;
+    const {
+      formObj: {
+        firstName, lastName, email, intensity,
+      }, personalImageData, styleImageData,
+    } = this.state;
     const jobInfo = {
       userDirectory: `${firstName}_${lastName}`,
       email,
+      intensity,
       contentImage: personalImageData.name,
       styleImage: styleImageData.name,
     };
@@ -208,14 +212,13 @@ class FormContainer extends React.Component {
     this.setState({
       formObj: {
         ...formObj,
-        quality: value,
+        intensity: value,
       },
     });
   };
 
   render() {
     const {
-      activeStep,
       disableStart,
       emailValid,
       firstNameValid,
@@ -226,12 +229,10 @@ class FormContainer extends React.Component {
       savedPersonalImage,
       styleImageData,
     } = this.state;
-    const { classes } = this.props;
     const isValid = firstNameValid && lastNameValid && emailValid;
     return (
       <React.Fragment>
         <Form
-          activeStep={activeStep}
           disableStart={disableStart}
           formObj={formObj}
           formValid={isValid}

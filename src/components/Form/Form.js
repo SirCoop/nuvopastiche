@@ -4,8 +4,10 @@ import {
   Button,
   Grid,
   TextField,
+  Typography,
   withStyles,
 } from '@material-ui/core';
+import Slider from '@material-ui/lab/Slider';
 import Send from '@material-ui/icons/Send';
 import FileUploader from '../Upload/FileUploader';
 
@@ -41,6 +43,9 @@ const styles = theme => ({
     marginTop: '1rem',
     textAlign: 'center',
   },
+  slider: {
+    marginBottom: '.5rem',
+  },
 });
 
 class Form extends React.Component {
@@ -66,6 +71,7 @@ class Form extends React.Component {
       disableStart,
       formObj,
       handleInput,
+      handleSliderInput,
       formValid,
       personalImageData,
       savedPersonalImage,
@@ -172,6 +178,27 @@ class Form extends React.Component {
               </Grid>
             </Grid>
           </Grid>
+          <Grid item xs={12}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item xs={6}>
+                <Typography align="center">Style Intensity</Typography>
+                <Slider
+                  classes={{ container: classes.slider }}
+                  value={formObj.intensity}
+                  aria-labelledby="label"
+                  onChange={handleSliderInput}
+                  min={1}
+                  max={100}
+                />
+                {/* Intensity */}
+              </Grid>
+            </Grid>
+          </Grid>
           <Grid
             container
             direction="row"
@@ -206,6 +233,7 @@ Form.defaultProps = {
   handleArtImageUpload: PropTypes.func.isRequired,
   handlePersonalImageUpload: PropTypes.func.isRequired,
   handleInput: PropTypes.func.isRequired,
+  handleSliderInput: PropTypes.func.isRequired,
   personalImageData: PropTypes.shape({}).isRequired,
   savedPersonalImage: PropTypes.bool.isRequired,
   savedArtImage: PropTypes.bool.isRequired,
@@ -221,6 +249,7 @@ Form.propTypes = {
   handleArtImageUpload: PropTypes.func,
   handlePersonalImageUpload: PropTypes.func,
   handleInput: PropTypes.func,
+  handleSliderInput: PropTypes.func,
   personalImageData: PropTypes.shape({}),
   savedPersonalImage: PropTypes.bool,
   savedArtImage: PropTypes.bool,
