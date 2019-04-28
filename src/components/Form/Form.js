@@ -194,6 +194,7 @@ class Form extends React.Component {
                   onChange={handleSliderInput}
                   min={1}
                   max={100}
+                  disabled={!formValid || !savedArtImage || (savedPersonalImage && savedArtImage)}
                 />
                 {/* Intensity */}
               </Grid>
