@@ -8,6 +8,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
+import imageService from '../../services/image.service';
 import NPCarousel from '../Carousel';
 
 const styles = () => ({
@@ -16,34 +17,41 @@ const styles = () => ({
 });
 
 class Introduction extends React.Component {
-  images = [
-    {
-      src: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png',
-      name: 'Spiderman',
-      description: 'Spiderman',
-    },
-    {
-      src: 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_ironman.png',
-      name: 'Tony Stark',
-      description: 'Iron Man',
-    },
-  ];
-
   constructor(props) {
     super(props);
 
     this.state = {
+      carouselImages: [],
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.fetchCarouselImages();
+  }
+
+  fetchCarouselImages = () => {
+    const { toggleSpinner } = this.props;
+    toggleSpinner(true);
+    imageService.getCarouselImageUrls()
+      .then((data) => {
+        this.setCarouselImages(data);
+        toggleSpinner(false);
+      });
+  };
+
+  setCarouselImages = (carouselImages) => {
+    this.setState({
+      carouselImages,
+    });
+  }
 
   render() {
     const { classes } = this.props;
+    const { carouselImages } = this.state;
 
     return (
       <React.Fragment>
-        <NPCarousel images={this.images} />
+        <NPCarousel images={carouselImages} />
       </React.Fragment>
     );
   }
@@ -51,10 +59,12 @@ class Introduction extends React.Component {
 
 Introduction.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  toggleSpinner: PropTypes.func.isRequired,
 };
 
 Introduction.propTypes = {
   classes: PropTypes.shape({}),
+  toggleSpinner: PropTypes.func,
 };
 
 const mapStateToProps = ({

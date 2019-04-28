@@ -25,7 +25,7 @@ class NPCarousel extends Component {
     const imageHTML = images.map(item => (
       <div key={_.uniqueId(item.name)}>
         <img src={item.src} alt={item.name} />
-        <p className="legend">{item.description}</p>
+        {/* <p className="legend">{item.description}</p> */}
       </div>
     ));
     return imageHTML;
