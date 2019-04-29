@@ -23,6 +23,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import Collections from '@material-ui/icons/Collections';
+import HelpIcon from '@material-ui/icons/Help';
 import Info from '@material-ui/icons/Info';
 import Home from '@material-ui/icons/Home';
 import { fade } from '@material-ui/core/styles/colorManipulator';
@@ -76,6 +77,9 @@ const styles = theme => ({
     // [theme.breakpoints.up('sm')]: {
     //   minHeight: '64px',
     // },
+  },
+  headerInfo: {
+    marginTop: '.5rem',
   },
   content: {
     flexGrow: 1,
@@ -146,6 +150,9 @@ const styles = theme => ({
       display: 'block',
     },
   },
+  helpIcon: {
+    marginRight: '.5rem',
+  },
 });
 
 class PrimarySearchAppBar extends React.Component {
@@ -159,6 +166,10 @@ class PrimarySearchAppBar extends React.Component {
 
   handleDrawerClose = () => {
     this.setState({ open: false });
+  };
+
+  showHelp = () => {
+    console.log('HELP');
   };
 
   render() {
@@ -231,12 +242,15 @@ class PrimarySearchAppBar extends React.Component {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="no͞oˈvō&nbsp;&nbsp;paˈstēSH&nbsp;"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
               />
+            </div>
+            <div className={classes.helpIcon} onClick={this.showHelp}>
+              <HelpIcon />
             </div>
             <div className={classes.grow} />
           </Toolbar>
@@ -264,7 +278,7 @@ class PrimarySearchAppBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          {/* {'Test Header'} */}
+
         </main>
       </div>
     );
