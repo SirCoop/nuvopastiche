@@ -164,6 +164,15 @@ class PrimarySearchAppBar extends React.Component {
     open: false,
   };
 
+  componentDidMount() {
+    this.getDialogContent();
+  }
+
+  getDialogContent = () => {
+    // call dialog service to get images
+    return 'Test Content';
+  };
+
   handleDrawerOpen = () => {
     this.setState({ open: true });
   };
@@ -226,8 +235,9 @@ class PrimarySearchAppBar extends React.Component {
       confirmButton: {
         text: 'Got it!',
       },
-      contentText: 'Test text.',
-      title: 'How it works...',
+      contentText: 'How does it work?',
+      dialogContent: this.getDialogContent(),
+      title: 'No͞oˈvō PaˈstēSH',
     };
 
     return (

@@ -9,7 +9,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
   withStyles,
 } from '@material-ui/core';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
@@ -37,6 +36,7 @@ class DialogContainer extends React.Component {
         cancelButton,
         confirmButton,
         contentText,
+        dialogContent,
         title,
       },
     } = this.props;
@@ -55,7 +55,7 @@ class DialogContainer extends React.Component {
             <DialogContentText>
               {contentText}
             </DialogContentText>
-            {/* {'form goes here'} */}
+            {dialogContent}
           </DialogContent>
           <DialogActions>
             {
