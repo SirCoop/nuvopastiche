@@ -8,7 +8,6 @@ import './styles/index.css';
 import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
-import ConnectedDialogContainer from './components/Dialog';
 import PrimarySearchAppBar from './components/AppBar';
 // Redux
 import deviceActionCreators from './redux/actions/device/deviceActionCreators';
@@ -46,7 +45,6 @@ class App extends React.Component {
         <Router />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
-        <ConnectedDialogContainer />
       </React.Fragment>
     );
   }

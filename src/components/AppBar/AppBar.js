@@ -29,6 +29,7 @@ import HelpIcon from '@material-ui/icons/HelpOutline';
 import Info from '@material-ui/icons/Info';
 import Home from '@material-ui/icons/Home';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import ConnectedDialogContainer from '../Dialog/DialogContainer';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
 
 const drawerWidth = 240;
@@ -220,6 +221,15 @@ class PrimarySearchAppBar extends React.Component {
       </div>
     );
 
+    const dialogContent = {
+      cancelButton: '',
+      confirmButton: {
+        text: 'Got it!',
+      },
+      contentText: 'Test text.',
+      title: 'How it works...',
+    };
+
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -289,6 +299,7 @@ class PrimarySearchAppBar extends React.Component {
           <div className={classes.drawerHeader} />
 
         </main>
+        <ConnectedDialogContainer content={dialogContent} />
       </div>
     );
   }

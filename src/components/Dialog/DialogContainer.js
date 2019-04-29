@@ -31,7 +31,15 @@ class DialogContainer extends React.Component {
   };
 
   render() {
-    const { activateDialog } = this.props;
+    const {
+      activateDialog,
+      content: {
+        cancelButton,
+        confirmButton,
+        contentText,
+        title,
+      },
+    } = this.props;
     return (
       <div>
         <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
@@ -42,27 +50,31 @@ class DialogContainer extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+          <DialogTitle id="form-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              {'To subscribe to this website, please enter your email address here. We will send updates occasionally.'}
+              {contentText}
             </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
+            {/* {'form goes here'} */}
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              {'Cancel'}
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              {'Subscribe'}
-            </Button>
+            {
+              cancelButton
+                ? (
+                  <Button onClick={this.handleClose} color="primary">
+                    {cancelButton.text}
+                  </Button>
+                ) : ''
+            }
+
+            {
+              confirmButton
+                ? (
+                  <Button onClick={this.handleClose} color="primary">
+                    {confirmButton.text}
+                  </Button>
+                ) : ''
+            }
           </DialogActions>
         </Dialog>
       </div>
@@ -73,12 +85,14 @@ class DialogContainer extends React.Component {
 DialogContainer.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
   activateDialog: PropTypes.bool.isRequired,
+  content: PropTypes.shape({}).isRequired,
   toggleDialog: PropTypes.func.isRequired,
 };
 
 DialogContainer.propTypes = {
   classes: PropTypes.shape({}),
   activateDialog: PropTypes.bool,
+  content: PropTypes.shape({}),
   toggleDialog: PropTypes.func,
 };
 
