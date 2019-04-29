@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import fp from 'lodash/fp';
 import classNames from 'classnames';
 import { Link as RouterLink } from 'react-router-dom';
 import {
@@ -23,10 +25,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import Collections from '@material-ui/icons/Collections';
-import HelpIcon from '@material-ui/icons/Help';
+import HelpIcon from '@material-ui/icons/HelpOutline';
 import Info from '@material-ui/icons/Info';
 import Home from '@material-ui/icons/Home';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
 
 const drawerWidth = 240;
 
@@ -169,7 +172,8 @@ class PrimarySearchAppBar extends React.Component {
   };
 
   showHelp = () => {
-    console.log('HELP');
+    const { toggleDialog } = this.props;
+    toggleDialog(true);
   };
 
   render() {
@@ -242,16 +246,21 @@ class PrimarySearchAppBar extends React.Component {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="no͞oˈvō&nbsp;&nbsp;paˈstēSH&nbsp;"
+                placeholder="Monet..."
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
               />
             </div>
-            <div className={classes.helpIcon} onClick={this.showHelp}>
+            <IconButton
+              color="inherit"
+              aria-label="Help"
+              onClick={this.showHelp}
+              className={classNames(classes.helpIcon)}
+            >
               <HelpIcon />
-            </div>
+            </IconButton>
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>
@@ -285,9 +294,33 @@ class PrimarySearchAppBar extends React.Component {
   }
 }
 
-PrimarySearchAppBar.propTypes = {
+PrimarySearchAppBar.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
   theme: PropTypes.shape({}).isRequired,
+  toggleDialog: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(PrimarySearchAppBar);
+PrimarySearchAppBar.propTypes = {
+  classes: PropTypes.shape({}),
+  theme: PropTypes.shape({}),
+  toggleDialog: PropTypes.func,
+};
+
+const mapStateToProps = ({
+  activateDialog,
+}) => ({
+  activateDialog,
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleDialog: (activateDialog) => {
+    dispatch(dialogActionCreators.toggleDialog(activateDialog));
+  },
+});
+
+const ConnetedPrimarySearchAppBar = fp.compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles, { withTheme: true }),
+)(PrimarySearchAppBar);
+
+export default ConnetedPrimarySearchAppBar;
