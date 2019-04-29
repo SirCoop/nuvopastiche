@@ -31,6 +31,7 @@ import Home from '@material-ui/icons/Home';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import ConnectedDialogContainer from '../Dialog/DialogContainer';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
+import ConnectedHelpContainer from '../Help';
 
 const drawerWidth = 240;
 
@@ -164,14 +165,7 @@ class PrimarySearchAppBar extends React.Component {
     open: false,
   };
 
-  componentDidMount() {
-    this.getDialogContent();
-  }
-
-  getDialogContent = () => {
-    // call dialog service to get images
-    return 'Test Content';
-  };
+  componentDidMount() {}
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -236,7 +230,7 @@ class PrimarySearchAppBar extends React.Component {
         text: 'Got it!',
       },
       contentText: 'How does it work?',
-      dialogContent: this.getDialogContent(),
+      dialogContent: <ConnectedHelpContainer />,
       title: 'No͞oˈvō PaˈstēSH',
     };
 

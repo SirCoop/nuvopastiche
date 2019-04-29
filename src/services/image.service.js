@@ -7,12 +7,17 @@ const { API_ROOT } = CONSTANTS;
 
 const imageService = {
   getCarouselImageUrls: () => getCarouselImageUrls().then(res => marshallImageUrls(res.data)),
+  getHelpImageUrls: () => getHelpImageUrls().then(res => marshallImageUrls(res.data)),
 };
 
 export default imageService;
 
 const getCarouselImageUrls = () => {
   return axios.get(`${API_ROOT}/api/images/carousel`);
+};
+
+const getHelpImageUrls = () => {
+  return axios.get(`${API_ROOT}/api/images/help`);
 };
 
 const marshallImageUrls = ({ data }) => {
