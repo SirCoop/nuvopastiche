@@ -46,21 +46,11 @@ class HelpContainer extends React.Component {
     });
   };
 
-  generateImageDivs = () => {
-    const { helpImages } = this.state;
-    const imageHTML = helpImages.map(item => (
-      <div key={_.uniqueId(item.name)}>
-        <img src={item.src} alt={item.name} />
-        {/* <p className="legend">{item.description}</p> */}
-      </div>
-    ));
-    return imageHTML;
-  };
-
   render() {
+    const { helpImages } = this.state;
     return (
       <React.Fragment>
-        <Help images={this.generateImageDivs()} />
+        {helpImages.length ? <Help images={helpImages} /> : ''}
       </React.Fragment>
     );
   }

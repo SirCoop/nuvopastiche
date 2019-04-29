@@ -231,7 +231,7 @@ class PrimarySearchAppBar extends React.Component {
       },
       contentText: 'How does it work?',
       dialogContent: <ConnectedHelpContainer />,
-      title: 'No͞oˈvō PaˈstēSH',
+      title: 'Nuvo Pastiche (No͞oˈvō PaˈstēSH)',
     };
 
     return (
