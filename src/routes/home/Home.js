@@ -7,23 +7,22 @@ import { connect } from 'react-redux';
 import {
   Card,
   CardContent,
-  CardHeader,
-  Divider,
   Grid,
   Typography,
   withStyles,
 } from '@material-ui/core';
-import notify from '../../components/Snackbar/notify';
-import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 import ConnectedIntroduction from '../../components/Introduction';
 import ConnectedFormContainer from '../../components/Form';
 
 const styles = () => ({
   root: {
-    marginTop: '1rem',
+    marginTop: '.5rem',
   },
   quote: {
     marginTop: '3rem',
+  },
+  cardContent: {
+    padding: '0px',
   },
 });
 
@@ -44,8 +43,8 @@ class HomeContainer extends React.Component {
         <Grid container className={classes.root}>
           <Grid item sm={3} />
           <Grid item xs={12} sm={6}>
-            <Card className={classes.card}>
-              <CardContent>
+            <Card>
+              <CardContent className={classes.cardContent}>
                 <Grid container className={classes.root}>
                   <Grid
                     container

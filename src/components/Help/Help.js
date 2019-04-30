@@ -55,6 +55,8 @@ const Help = (props) => {
       <div key={_.uniqueId(pastiche.name)} className={classes.imageContainer}>
         <img src={pastiche.src} alt={pastiche.name} />
       </div>
+
+      {/* TODO: add stepper to main form, but vertically aligned and step through as user interacts */}
       <Stepper>
         {steps.map((label, index) => {
           const stepProps = {};

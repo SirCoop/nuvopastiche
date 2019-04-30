@@ -2,13 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import fp from 'lodash/fp';
-import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  Card,
-  CardHeader,
-  Grid,
   withStyles,
 } from '@material-ui/core';
 import notify from '../Snackbar/notify';
@@ -18,13 +14,6 @@ import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCrea
 
 const styles = () => ({
   root: {
-  },
-  card: {
-    overflow: 'visible',
-  },
-  cardHeader: {
-    backgroundColor: '#eee',
-    textAlign: 'center',
   },
   media: {
     height: 0,
