@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import {
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
   withStyles,
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import DragHandleIcon from '@material-ui/icons/DragHandle';
+import NPVerticalStepper from '../Stepper';
 
 const styles = () => ({
   root: {
@@ -30,47 +24,11 @@ const styles = () => ({
   },
 });
 
-const steps = ['Cute pic of Belle', 'Your favorite art', 'Intensity', 'Send'];
-
-const isStepOptional = step => step === 2;
-
 const Help = (props) => {
-  const { classes, images } = props;
-  const [belle, cezanne, pastiche] = images;
+  const { images } = props;
   return (
     <React.Fragment>
-      {/* {generateImageDivs(images)} */}
-      <div key={_.uniqueId(belle.name)} className={classes.imageContainer}>
-        <img src={belle.src} alt={belle.name} />
-      </div>
-      <div className={classes.iconContainer}>
-        <AddIcon className={classes.icon} />
-      </div>
-      <div key={_.uniqueId(cezanne.name)} className={classes.imageContainer}>
-        <img src={cezanne.src} alt={cezanne.name} />
-      </div>
-      <div className={classes.iconContainer}>
-        <DragHandleIcon className={classes.icon} />
-      </div>
-      <div key={_.uniqueId(pastiche.name)} className={classes.imageContainer}>
-        <img src={pastiche.src} alt={pastiche.name} />
-      </div>
-
-      {/* TODO: add stepper to main form, but vertically aligned and step through as user interacts */}
-      <Stepper>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+      <NPVerticalStepper images={images} />
     </React.Fragment>
   );
 };
