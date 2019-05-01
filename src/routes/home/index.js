@@ -1,9 +1,10 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import NPSpinner from '../../components/Spinner/Spinner';
 
 const Home = Loadable({
   loader: () => import('./Home'),
-  loading: () => <div>Loading...</div>,
+  loading: () => <div><NPSpinner /></div>,
 });
 
 export default {

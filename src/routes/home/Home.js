@@ -11,6 +11,7 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
+import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 import ConnectedIntroduction from '../../components/Introduction';
 import ConnectedFormContainer from '../../components/Form';
 
@@ -38,6 +39,7 @@ class HomeContainer extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <React.Fragment>
         <Grid container className={classes.root}>
