@@ -27,6 +27,9 @@ const styles = theme => ({
   resetContainer: {
     padding: theme.spacing.unit * 3,
   },
+  pastiche: {
+    display: 'block',
+  },
 });
 
 class NPVerticalStepper extends React.Component {
@@ -41,40 +44,53 @@ class NPVerticalStepper extends React.Component {
   componentDidMount() {}
 
   getSteps = () => {
-    return ['Upload cute pic of Belle', 'Upload favorite art', 'Choose style intensity', 'Send!'];
+    return ['Upload cute pic of Belle', 'Upload favorite art', 'Choose style intensity', 'Send & Wait'];
   };
 
-  getStepContent = (step) => {
+  getBelleContainer = () => {
     const { classes, images } = this.props;
-    const [belle, cezanne, pastiche] = images;
+    const belle = images[0];
 
-    const belleContainer = (
+    return (
       <span key={_.uniqueId(belle.name)} className={classes.imageContainer}>
         <img src={belle.src} alt={belle.name} />
       </span>
     );
+  };
 
-    const cezanneContainer = (
+  getCezanneContainer = () => {
+    const { classes, images } = this.props;
+    const cezanne = images[1];
+
+    return (
       <span key={_.uniqueId(cezanne.name)} className={classes.imageContainer}>
         <img src={cezanne.src} alt={cezanne.name} />
       </span>
     );
+  };
 
-    const pasticheContainer = (
+  getPasticheContainer = () => {
+    const { classes, images } = this.props;
+    const pastiche = images[2];
+
+    return (
       <span key={_.uniqueId(pastiche.name)} className={classes.imageContainer}>
-        {'Your pastiche will be emailed!'}
-        <img src={pastiche.src} alt={pastiche.name} />
+        <img src={pastiche.src} alt={pastiche.name} className={classes.pastiche} />
+        {'Your pastiche will be emailed upon completion.'}
       </span>
     );
+  };
+
+  getStepContent = (step) => {
     switch (step) {
       case 0:
-        return belleContainer;
+        return this.getBelleContainer();
       case 1:
-        return cezanneContainer;
+        return this.getCezanneContainer();
       case 2:
         return 'Style';
       case 3:
-        return pasticheContainer;
+        return this.getPasticheContainer();
       default:
         return '';
     }
@@ -136,7 +152,9 @@ class NPVerticalStepper extends React.Component {
         </Stepper>
         {activeStep === steps.length && (
           <Paper square elevation={0} className={classes.resetContainer}>
-            <Typography>{'All steps completed - you&apos;re finished'}</Typography>
+            <Typography>
+              {''}
+            </Typography>
             <Button onClick={this.handleReset} className={classes.button}>
               {'Reset'}
             </Button>
