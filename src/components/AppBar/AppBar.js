@@ -161,7 +161,11 @@ const styles = theme => ({
 });
 
 class PrimarySearchAppBar extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
 
   componentDidMount() {}
 

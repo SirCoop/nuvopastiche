@@ -9,6 +9,7 @@ import Router from './routes';
 import CustomizedSnackbars from './components/Snackbar/CustomizedSnackbars';
 import ConnectedSpinnerContainer from './components/Spinner/SpinnerContainer';
 import PrimarySearchAppBar from './components/AppBar';
+import LabelBottomNavigation from './components/BottomNavigation';
 // Redux
 import deviceActionCreators from './redux/actions/device/deviceActionCreators';
 
@@ -45,6 +46,7 @@ class App extends React.Component {
         <Router />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
+        <LabelBottomNavigation />
       </React.Fragment>
     );
   }
