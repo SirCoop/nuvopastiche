@@ -45,11 +45,13 @@ class HelpContainer extends React.Component {
           variant: 'error',
           duration: 3000,
         });
+        this.setHelpImages();
         toggleSpinner(false);
       });
   };
 
-  setHelpImages = (helpImages) => {
+  // TODO: Make text defaults in stepper if no images available
+  setHelpImages = (helpImages = []) => {
     this.setState({
       helpImages,
     });
