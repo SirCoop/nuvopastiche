@@ -49,13 +49,15 @@ class NPVerticalStepper extends React.Component {
 
   getBelleContainer = () => {
     const { classes, images } = this.props;
-    const belle = images[0];
+    const belle = images.length ? images[0] : '';
 
-    return (
+    const belleHTML = (
       <span key={_.uniqueId(belle.name)} className={classes.imageContainer}>
         <img src={belle.src} alt={belle.name} />
       </span>
     );
+
+    return belleHTML || '';
   };
 
   getCezanneContainer = () => {

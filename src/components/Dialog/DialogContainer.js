@@ -42,9 +42,6 @@ class DialogContainer extends React.Component {
     } = this.props;
     return (
       <div>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          {'Open form dialog'}
-        </Button>
         <Dialog
           open={activateDialog}
           onClose={this.handleClose}
