@@ -9,6 +9,9 @@ import { Carousel } from 'react-responsive-carousel';
 const styles = () => ({
   root: {
   },
+  carousel: {
+    maxHeight: '60%',
+  },
 });
 
 class NPCarousel extends Component {
@@ -32,8 +35,10 @@ class NPCarousel extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <Carousel infiniteLoop autoPlay swipeable width="100%">
+      <Carousel infiniteLoop autoPlay swipeable width="100%" className={classes.carousel}>
         {this.generateImageDivs()}
       </Carousel>
     );

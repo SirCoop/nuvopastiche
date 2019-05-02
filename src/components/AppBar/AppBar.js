@@ -1,33 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import fp from 'lodash/fp';
 import classNames from 'classnames';
-import { Link as RouterLink } from 'react-router-dom';
 import {
   AppBar,
   CssBaseline,
-  Divider,
-  Drawer,
   IconButton,
   InputBase,
   Link,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
   withStyles,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import Collections from '@material-ui/icons/Collections';
+import Brush from '@material-ui/icons/Brush';
 import HelpIcon from '@material-ui/icons/HelpOutline';
-import Info from '@material-ui/icons/Info';
-import Home from '@material-ui/icons/Home';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import ConnectedDialogContainer from '../Dialog/DialogContainer';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
@@ -40,6 +29,7 @@ const styles = theme => ({
     display: 'flex',
   },
   appBar: {
+    alignItems: 'center',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -155,83 +145,47 @@ const styles = theme => ({
       display: 'block',
     },
   },
+  brushIcon: {
+    display: 'none',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+      paddingRight: '1.5rem',
+    },
+  },
   helpIcon: {
     marginRight: '.5rem',
+  },
+  galleryIcon: {
+
   },
 });
 
 class PrimarySearchAppBar extends React.Component {
-  state = {
-    open: false,
-  };
+  state = {};
 
   componentDidMount() {}
-
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
 
   showHelp = () => {
     const { toggleDialog } = this.props;
     toggleDialog(true);
   };
 
+  goToRoute = (route) => {
+    const { history } = this.props;
+    history.push(route);
+  };
+
   render() {
-    const { classes, theme } = this.props;
-    const { open } = this.state;
-
-    const items = [
-      {
-        text: 'Home',
-        icon: <Home />,
-        link: '/home',
-      },
-      {
-        text: 'Gallery',
-        icon: <Collections />,
-        link: '/gallery',
-      },
-      {
-        text: 'About',
-        icon: <Info />,
-        link: '/about',
-      },
-      {
-        text: 'Contact',
-        icon: <MailIcon />,
-        link: '/contact',
-      },
-    ];
-
-    const drawer = (
-      <div>
-        <div className={classes.toolbar} />
-        <Divider />
-        <List>
-          {items.map(item => (
-            <Link component={RouterLink} to={item.link} key={item.text} underline="none" onClick={this.handleDrawerClose}>
-              <ListItem button key={item.text}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} className={classes.navigationLink} />
-              </ListItem>
-            </Link>
-          ))}
-        </List>
-      </div>
-    );
+    const { classes } = this.props;
 
     const dialogContent = {
       cancelButton: '',
       confirmButton: {
         text: 'Got it!',
       },
-      contentText: 'How does it work?',
+      contentText: '',
       dialogContent: <ConnectedHelpContainer />,
-      title: 'No͞oˈvō PaˈstēSH',
+      title: 'How does it work?',
     };
 
     return (
@@ -239,22 +193,20 @@ class PrimarySearchAppBar extends React.Component {
         <CssBaseline />
         <AppBar
           position="fixed"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
+          className={classes.appBar}
         >
-          <Toolbar disableGutters={!open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Link component={RouterLink} to="/" className={classNames(classes.title)} underline="none" variant="h6" color="inherit" noWrap>
+          <Toolbar>
+            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h6" color="inherit" noWrap>
               {'Nuvo Pastiche'}
             </Link>
+            <IconButton
+              color="inherit"
+              aria-label="Home"
+              onClick={() => this.goToRoute('/home')}
+              className={classNames(classes.brushIcon)}
+            >
+              <Brush />
+            </IconButton>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -269,6 +221,14 @@ class PrimarySearchAppBar extends React.Component {
             </div>
             <IconButton
               color="inherit"
+              aria-label="Gallery"
+              onClick={() => this.goToRoute('/gallery')}
+              className={classNames(classes.galleryIcon)}
+            >
+              <Collections />
+            </IconButton>
+            <IconButton
+              color="inherit"
               aria-label="Help"
               onClick={this.showHelp}
               className={classNames(classes.helpIcon)}
@@ -278,31 +238,6 @@ class PrimarySearchAppBar extends React.Component {
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </div>
-          <Divider />
-          {drawer}
-        </Drawer>
-        <main
-          className={classNames(classes.content, {
-            [classes.contentShift]: open,
-          })}
-        >
-          <div className={classes.drawerHeader} />
-
-        </main>
         <ConnectedDialogContainer content={dialogContent} />
       </div>
     );
@@ -311,12 +246,14 @@ class PrimarySearchAppBar extends React.Component {
 
 PrimarySearchAppBar.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
   theme: PropTypes.shape({}).isRequired,
   toggleDialog: PropTypes.func.isRequired,
 };
 
 PrimarySearchAppBar.propTypes = {
   classes: PropTypes.shape({}),
+  history: PropTypes.shape({}),
   theme: PropTypes.shape({}),
   toggleDialog: PropTypes.func,
 };
@@ -334,6 +271,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ConnetedPrimarySearchAppBar = fp.compose(
+  withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles, { withTheme: true }),
 )(PrimarySearchAppBar);
