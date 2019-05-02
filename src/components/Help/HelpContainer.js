@@ -11,6 +11,7 @@ import {
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 import imageService from '../../services/image.service';
 import Help from './Help';
+import notify from '../Snackbar/notify';
 
 const styles = () => ({
   root: {
@@ -36,6 +37,14 @@ class HelpContainer extends React.Component {
     imageService.getHelpImageUrls()
       .then((data) => {
         this.setHelpImages(data);
+        toggleSpinner(false);
+      })
+      .catch(() => {
+        notify({
+          message: 'Could not retrieve help images.',
+          variant: 'error',
+          duration: 3000,
+        });
         toggleSpinner(false);
       });
   };
