@@ -16,6 +16,8 @@ import deviceActionCreators from './redux/actions/device/deviceActionCreators';
 const styles = {
   root: {
   },
+  router: {
+  },
 };
 
 class App extends React.Component {
@@ -40,10 +42,11 @@ class App extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <React.Fragment>
         <PrimarySearchAppBar />
-        <Router />
+        <Router className={classes.router} />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
         <LabelBottomNavigation />

@@ -17,10 +17,10 @@ import ConnectedFormContainer from '../../components/Form';
 
 const styles = () => ({
   root: {
-    marginTop: '.5rem',
+    // marginTop: '2rem',
   },
   quote: {
-    marginTop: '3rem',
+    marginTop: '2rem',
   },
   cardContent: {
     padding: '0px',

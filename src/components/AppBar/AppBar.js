@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import fp from 'lodash/fp';
-import classNames from 'classnames';
 import {
   AppBar,
   CssBaseline,
-  IconButton,
-  InputBase,
   Link,
   Toolbar,
   withStyles,
 } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import ConnectedDialogContainer from '../Dialog/DialogContainer';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
@@ -27,6 +23,8 @@ const styles = theme => ({
   },
   appBar: {
     alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    color: 'rgba(0, 0, 0, 0.54)',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -50,37 +48,11 @@ const styles = theme => ({
   hide: {
     display: 'none',
   },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-    // my custom preference for responsive drawer height
-    // minHeight: '10px',
-    // my custom preference for responsive drawer height
-    // [theme.breakpoints.up('sm')]: {
-    //   minHeight: '64px',
-    // },
-  },
   headerInfo: {
     marginTop: '.5rem',
   },
   content: {
     flexGrow: 1,
-    // my custom preference for responsive content padding
-    // padding: '2px',
-    // my custom preference for responsive content padding
-    // [theme.breakpoints.up('sm')]: {
-    //   padding: theme.spacing.unit * 3,
-    // },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -138,7 +110,8 @@ const styles = theme => ({
   },
   title: {
     display: 'none',
-    [theme.breakpoints.up('sm')]: {
+    fontFamily: 'Snell Roundhand Script',
+    [theme.breakpoints.up('xs')]: {
       display: 'block',
     },
   },
@@ -191,24 +164,9 @@ class PrimarySearchAppBar extends React.Component {
           className={classes.appBar}
         >
           <Toolbar>
-            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h6" color="inherit" noWrap>
+            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h5" color="inherit" noWrap>
               {'Nuvo Pastiche'}
             </Link>
-            <Link component={RouterLink} to="/" className={classes.titleMobile} underline="none" variant="h6" color="inherit">
-              {'NP'}
-            </Link>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Monet..."
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>

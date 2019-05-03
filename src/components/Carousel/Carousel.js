@@ -10,7 +10,6 @@ const styles = () => ({
   root: {
   },
   carousel: {
-    maxHeight: '60%',
   },
 });
 
