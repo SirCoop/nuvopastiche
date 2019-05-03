@@ -14,9 +14,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import Collections from '@material-ui/icons/Collections';
-import Brush from '@material-ui/icons/Brush';
-import HelpIcon from '@material-ui/icons/HelpOutline';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import ConnectedDialogContainer from '../Dialog/DialogContainer';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
@@ -145,18 +142,12 @@ const styles = theme => ({
       display: 'block',
     },
   },
-  brushIcon: {
+  titleMobile: {
     display: 'none',
     [theme.breakpoints.down('sm')]: {
       display: 'block',
-      paddingRight: '1.5rem',
     },
-  },
-  helpIcon: {
-    marginRight: '.5rem',
-  },
-  galleryIcon: {
-
+    paddingRight: '1.5rem',
   },
 });
 
@@ -203,14 +194,9 @@ class PrimarySearchAppBar extends React.Component {
             <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h6" color="inherit" noWrap>
               {'Nuvo Pastiche'}
             </Link>
-            <IconButton
-              color="inherit"
-              aria-label="Home"
-              onClick={() => this.goToRoute('/home')}
-              className={classNames(classes.brushIcon)}
-            >
-              <Brush />
-            </IconButton>
+            <Link component={RouterLink} to="/" className={classes.titleMobile} underline="none" variant="h6" color="inherit">
+              {'NP'}
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -223,22 +209,6 @@ class PrimarySearchAppBar extends React.Component {
                 }}
               />
             </div>
-            <IconButton
-              color="inherit"
-              aria-label="Gallery"
-              onClick={() => this.goToRoute('/gallery')}
-              className={classNames(classes.galleryIcon)}
-            >
-              <Collections />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              aria-label="Help"
-              onClick={this.showHelp}
-              className={classNames(classes.helpIcon)}
-            >
-              <HelpIcon />
-            </IconButton>
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>

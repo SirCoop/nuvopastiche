@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  withStyles,
+} from '@material-ui/core';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import CollectionsIcon from '@material-ui/icons/Collections';
+import BrushIcon from '@material-ui/icons/Brush';
+import HelpIcon from '@material-ui/icons/HelpOutline';
+import SearchIcon from '@material-ui/icons/Search';
 
 const styles = {
   root: {
@@ -15,6 +17,7 @@ const styles = {
     right: 'auto',
     position: 'fixed',
     width: '100%',
+    backgroundColor: '#f5f5f5',
   },
 };
 
@@ -33,10 +36,10 @@ class LabelBottomNavigation extends React.Component {
 
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction label="" value="recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="" value="favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="" value="nearby" icon={<LocationOnIcon />} />
-        <BottomNavigationAction label="" value="folder" icon={<Icon>folder</Icon>} />
+        <BottomNavigationAction label="" value="home" icon={<BrushIcon />} />
+        <BottomNavigationAction label="" value="search" icon={<SearchIcon />} />
+        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon />} />
+        <BottomNavigationAction label="" value="folder" icon={<HelpIcon />} />
       </BottomNavigation>
     );
   }
