@@ -164,7 +164,7 @@ class PrimarySearchAppBar extends React.Component {
           className={classes.appBar}
         >
           <Toolbar>
-            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h5" color="inherit" noWrap>
+            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h4" color="inherit" noWrap>
               {'Nuvo Pastiche'}
             </Link>
             <div className={classes.grow} />
