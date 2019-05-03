@@ -10,6 +10,11 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const styles = {
   root: {
+    bottom: '0',
+    left: 'auto',
+    right: 'auto',
+    position: 'fixed',
+    width: '100%',
   },
 };
 
@@ -27,14 +32,12 @@ class LabelBottomNavigation extends React.Component {
     const { value } = this.state;
 
     return (
-      <div>
-        <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-          <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-          <BottomNavigationAction label="Folder" value="folder" icon={<Icon>folder</Icon>} />
-        </BottomNavigation>
-      </div>
+      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
+        <BottomNavigationAction label="" value="recents" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="" value="favorites" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="" value="nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="" value="folder" icon={<Icon>folder</Icon>} />
+      </BottomNavigation>
     );
   }
 }
