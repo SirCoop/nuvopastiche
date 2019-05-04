@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import fp from 'lodash/fp';
 import {
@@ -19,19 +20,27 @@ const styles = {
     width: '100%',
     backgroundColor: '#f5f5f5',
   },
+  activeNav: {
+    color: '#01c2ff',
+  },
   icon: {
-    color: '#05d0f3',
+    color: '#000',
   },
 };
 
 class LabelBottomNavigation extends React.Component {
-  state = {
-    value: 'recents',
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: 'home',
+    };
+  }
 
   handleChange = (event, value) => {
     const { history } = this.props;
     const url = `/${value}`;
+    this.setState({ value });
     history.push(url);
   };
 
@@ -41,10 +50,10 @@ class LabelBottomNavigation extends React.Component {
 
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction label="" value="home" icon={<BrushIcon className={classes.icon} />} />
-        <BottomNavigationAction label="" value="search" icon={<SearchIcon className={classes.icon} />} />
-        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon className={classes.icon} />} />
-        <BottomNavigationAction label="" value="help" icon={<HelpIcon className={classes.icon} />} />
+        <BottomNavigationAction label="" value="home" icon={<BrushIcon className={value === 'home' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="search" icon={<SearchIcon className={value === 'search' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon className={value === 'gallery' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="help" icon={<HelpIcon className={value === 'help' ? classes.activeNav : classes.icon} />} />
       </BottomNavigation>
     );
   }
