@@ -14,6 +14,7 @@ const styles = {
     position: 'absolute',
     top: '56px', // appBar height
     bottom: '35px', // footer height = 56 but this works for now
+    width: '100%',
   },
 };
 
