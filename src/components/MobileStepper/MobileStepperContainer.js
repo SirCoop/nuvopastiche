@@ -65,24 +65,30 @@ class MobileStepperContainer extends React.Component {
       classes, images, maxWidth, theme,
     } = this.props;
     const { activeStep } = this.state;
-    const tutorialSteps = images;
-    const maxSteps = tutorialSteps.length;
+    const maxSteps = images.length;
 
     return (
       <div className={classes.root} style={{ maxWidth }}>
-        <Paper square elevation={0} className={classes.header}>
-          <Typography>{`${tutorialSteps[activeStep].step}) ${tutorialSteps[activeStep].stepLabel}`}</Typography>
-        </Paper>
+        {
+          images[activeStep].header
+            ? (
+              <Paper square elevation={0} className={classes.header}>
+                <Typography>
+                  {images[activeStep].header}
+                </Typography>
+              </Paper>
+            ) : ''
+        }
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {tutorialSteps.map((step, index) => (
-            <div key={step.name}>
+          {images.map((image, index) => (
+            <div key={image.name}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.src} alt={step.stepLabel} />
+                <img className={classes.img} src={image.src} alt={image.stepLabel} />
               ) : null}
             </div>
           ))}

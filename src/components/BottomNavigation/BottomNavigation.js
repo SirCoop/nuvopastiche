@@ -33,27 +33,27 @@ class LabelBottomNavigation extends React.Component {
     super(props);
 
     this.state = {
-      value: 'home',
+      value: '',
     };
   }
 
   handleChange = (event, value) => {
     const { history } = this.props;
     const url = `/${value}`;
-    this.setState({ value });
     history.push(url);
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, location: { pathname } } = this.props;
     const { value } = this.state;
+    const currentPath = pathname.split('/').pop();
 
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction label="" value="home" icon={<BrushIcon className={value === 'home' ? classes.activeNav : classes.icon} />} />
-        <BottomNavigationAction label="" value="search" icon={<SearchIcon className={value === 'search' ? classes.activeNav : classes.icon} />} />
-        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon className={value === 'gallery' ? classes.activeNav : classes.icon} />} />
-        <BottomNavigationAction label="" value="help" icon={<HelpIcon className={value === 'help' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="home" icon={<BrushIcon className={currentPath === 'home' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="search" icon={<SearchIcon className={currentPath === 'search' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon className={currentPath === 'gallery' ? classes.activeNav : classes.icon} />} />
+        <BottomNavigationAction label="" value="help" icon={<HelpIcon className={currentPath === 'help' ? classes.activeNav : classes.icon} />} />
       </BottomNavigation>
     );
   }
@@ -62,6 +62,7 @@ class LabelBottomNavigation extends React.Component {
 LabelBottomNavigation.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({}).isRequired,
 };
 
 export default fp.compose(
