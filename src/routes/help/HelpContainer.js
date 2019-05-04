@@ -17,7 +17,7 @@ const styles = () => ({
   },
 });
 
-class About extends React.Component {
+class Help extends React.Component {
   constructor(props) {
     super(props);
 
@@ -52,11 +52,11 @@ class About extends React.Component {
   }
 }
 
-About.defaultProps = {
+Help.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
 };
 
-About.propTypes = {
+Help.propTypes = {
   classes: PropTypes.shape({}),
 };
 
@@ -72,10 +72,10 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ConnectedAbout = fp.compose(
+const HelpContainer = fp.compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
-)(About);
+)(Help);
 
-export default ConnectedAbout;
+export default HelpContainer;

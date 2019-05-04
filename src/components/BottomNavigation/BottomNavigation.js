@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import fp from 'lodash/fp';
 import {
   withStyles,
 } from '@material-ui/core';
@@ -28,7 +30,9 @@ class LabelBottomNavigation extends React.Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({ value });
+    const { history } = this.props;
+    const url = `/${value}`;
+    history.push(url);
   };
 
   render() {
@@ -40,7 +44,7 @@ class LabelBottomNavigation extends React.Component {
         <BottomNavigationAction label="" value="home" icon={<BrushIcon className={classes.icon} />} />
         <BottomNavigationAction label="" value="search" icon={<SearchIcon className={classes.icon} />} />
         <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon className={classes.icon} />} />
-        <BottomNavigationAction label="" value="folder" icon={<HelpIcon className={classes.icon} />} />
+        <BottomNavigationAction label="" value="help" icon={<HelpIcon className={classes.icon} />} />
       </BottomNavigation>
     );
   }
@@ -48,6 +52,10 @@ class LabelBottomNavigation extends React.Component {
 
 LabelBottomNavigation.propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
 };
 
-export default withStyles(styles)(LabelBottomNavigation);
+export default fp.compose(
+  withRouter,
+  withStyles(styles, { withTheme: true }),
+)(LabelBottomNavigation);

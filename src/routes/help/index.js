@@ -1,12 +1,12 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 
-const About = Loadable({
-  loader: () => import('./About'),
+const Help = Loadable({
+  loader: () => import('./HelpContainer'),
   loading: () => <div>Loading...</div>,
 });
 
 export default {
-  path: '/about',
-  Component: About,
+  path: '/help',
+  Component: Help,
 };

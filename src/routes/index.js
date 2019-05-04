@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import home from './home';
 import gallery from './gallery';
 import contact from './contact';
-import about from './about';
+import help from './help';
 
 const styles = {
   contentContainer: {
@@ -25,7 +25,7 @@ const RouterComponent = (props) => {
         <Route path={home.path} component={home.Component} />
         <Route path={gallery.path} component={gallery.Component} />
         <Route path={contact.path} component={contact.Component} />
-        <Route path={about.path} component={about.Component} />
+        <Route path={help.path} component={help.Component} />
         <Redirect from="/" to="/home" />
       </Switch>
     </div>
