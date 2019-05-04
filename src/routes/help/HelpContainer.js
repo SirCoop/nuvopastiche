@@ -1,7 +1,6 @@
 /* eslint no-console: 0 */ // --> OFF
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import fp from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,36 +10,16 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import DragHandleIcon from '@material-ui/icons/DragHandle';
 import notify from '../../components/Snackbar/notify';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 import imageService from '../../services/image.service';
 import MobileStepperContainer from '../../components/MobileStepper';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
   },
   definitions: {
     marginTop: '1rem',
-  },
-  dragHandleIcon: {
-    fontSize: '30px',
-  },
-  helpImagesContainer: {
-  },
-  icon: {
-    height: '133px',
-    verticalAlign: 'baseline',
-  },
-  imageContainer: {
-    display: 'inline-block',
-  },
-  image: {
-    [theme.breakpoints.down('sm')]: {
-      width: '100px',
-      height: 'auto,',
-    },
   },
 });
 
@@ -83,26 +62,6 @@ class Help extends React.Component {
     });
   };
 
-  generateImageDivs = () => {
-    const { classes } = this.props;
-    const { helpImages } = this.state;
-    const stepOne = helpImages[0];
-    const stepTwo = helpImages[1];
-    const stepThree = helpImages[2];
-
-    const html = (
-      <React.Fragment>
-        <img src={stepOne.src} alt={stepOne.name} className={classes.image} />
-        <AddIcon className={classes.icon} />
-        <img src={stepTwo.src} alt={stepTwo.name} className={classes.image} />
-        <DragHandleIcon className={classNames(classes.icon, classes.dragHandleIcon)} />
-        <img src={stepThree.src} alt={stepThree.name} className={classes.image} />
-      </React.Fragment>
-    );
-
-    return html;
-  };
-
   render() {
     const { classes } = this.props;
     const { helpImages } = this.state;
@@ -115,12 +74,7 @@ class Help extends React.Component {
             <Typography variant="subtitle1">
               {'How does it work?'}
             </Typography>
-            {/* {
-              helpImages.length
-                ? this.generateImageDivs()
-                : ''
-            } */}
-            <MobileStepperContainer />
+            {helpImages.length ? <MobileStepperContainer images={helpImages} maxWidth={300} /> : ''}
           </Grid>
           <Grid item sm={4} />
         </Grid>

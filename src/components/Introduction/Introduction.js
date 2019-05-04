@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 import imageService from '../../services/image.service';
-import NPCarousel from '../Carousel';
+import MobileStepperContainer from '../MobileStepper';
 
 const styles = () => ({
   root: {
@@ -50,7 +50,7 @@ class Introduction extends React.Component {
 
     return (
       <React.Fragment>
-        <NPCarousel images={carouselImages} />
+        {carouselImages.length ? <MobileStepperContainer images={carouselImages} /> : '' }
       </React.Fragment>
     );
   }
