@@ -8,18 +8,19 @@ import contact from './contact';
 import about from './about';
 
 const styles = {
-  root: {
-    // position: 'absolute',
-    // maxHeight: '95vh',
-    // overflow: 'auto',
-    // backgroundColor: '#fafafa',
+  contentContainer: {
+    // app content positioned absolutely between header and footer
+    overflow: 'auto',
+    position: 'absolute',
+    top: '56px', // appBar height
+    bottom: '35px', // footer height = 56 but this works for now
   },
 };
 
 const RouterComponent = (props) => {
   const { classes } = props;
   return (
-    <div className={classes.root}>
+    <div className={classes.contentContainer}>
       <Switch>
         <Route path={home.path} component={home.Component} />
         <Route path={gallery.path} component={gallery.Component} />

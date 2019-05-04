@@ -13,8 +13,6 @@ import SearchIcon from '@material-ui/icons/Search';
 const styles = {
   root: {
     bottom: '0',
-    left: 'auto',
-    right: 'auto',
     position: 'fixed',
     width: '100%',
     backgroundColor: '#f5f5f5',

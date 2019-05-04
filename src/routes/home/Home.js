@@ -23,7 +23,7 @@ const styles = () => ({
     marginTop: '2rem',
   },
   cardContent: {
-    padding: '0px',
+    // padding: '0px',
   },
 });
 

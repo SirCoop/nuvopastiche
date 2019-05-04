@@ -14,9 +14,10 @@ import LabelBottomNavigation from './components/BottomNavigation';
 import deviceActionCreators from './redux/actions/device/deviceActionCreators';
 
 const styles = {
-  root: {
-  },
-  router: {
+  appContainer: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
 };
 
@@ -44,13 +45,13 @@ class App extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
+      <div className={classes.appContainer}>
         <PrimarySearchAppBar />
-        <Router className={classes.router} />
+        <Router />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
         <LabelBottomNavigation />
-      </React.Fragment>
+      </div>
     );
   }
 }
