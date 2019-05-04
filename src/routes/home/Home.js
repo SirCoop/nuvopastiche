@@ -17,7 +17,6 @@ import ConnectedFormContainer from '../../components/Form';
 
 const styles = () => ({
   root: {
-    // marginTop: '2rem',
   },
   quote: {
     marginTop: '2rem',
