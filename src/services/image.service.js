@@ -22,9 +22,9 @@ const getHelpImageUrls = () => {
 
 const marshallImageUrls = ({ data }) => {
   const marshalledData = data.map((fileObj) => {
-    const { name, src } = fileObj;
+    const { src } = fileObj;
     return {
-      name,
+      ...fileObj,
       src: `${API_ROOT}/${src}`,
     };
   });

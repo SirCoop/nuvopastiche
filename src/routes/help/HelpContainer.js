@@ -19,7 +19,11 @@ const styles = () => ({
   root: {
   },
   definitions: {
+    margin: '.5rem',
+  },
+  disclaimer: {
     marginTop: '1rem',
+    marginBottom: '1rem',
   },
 });
 
@@ -55,7 +59,6 @@ class Help extends React.Component {
       });
   };
 
-  // TODO: Make text defaults in stepper if no images available
   setHelpImages = (helpImages = []) => {
     this.setState({
       helpImages,
@@ -75,26 +78,29 @@ class Help extends React.Component {
               {'How does it work?'}
             </Typography>
             {helpImages.length ? <MobileStepperContainer images={helpImages} maxWidth={300} /> : ''}
+            <Typography variant="caption" className={classes.disclaimer}>
+              {'Your pastiche will be emailed within 1-4 hours.'}
+            </Typography>
           </Grid>
           <Grid item sm={4} />
         </Grid>
         {/* first row */}
         <Divider />
         <Grid container className={classes.definitions}>
-          <Grid item sm={2} />
-          <Grid item sm={4}>
+          <Grid item sm={4} />
+          <Grid item xs={12} sm={2}>
             <Typography variant="subtitle1">
               <b>nu·vo&nbsp;</b>
               {'(no͞oˈvō) - modern or up to date.'}
             </Typography>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item xs={12} sm={2}>
             <Typography variant="subtitle1">
               <b>pas·tiche&nbsp;</b>
               {'(paˈstēSH) - an artistic work imitating the style of another.'}
             </Typography>
           </Grid>
-          <Grid item sm={2} />
+          <Grid item sm={4} />
         </Grid>
         {/* second row */}
       </React.Fragment>

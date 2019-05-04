@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -22,7 +21,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     height: 50,
-    paddingLeft: theme.spacing.unit * 4,
+    paddingLeft: theme.spacing.unit,
     backgroundColor: theme.palette.background.default,
   },
   img: {
@@ -61,29 +60,18 @@ class MobileStepperContainer extends React.Component {
     this.setState({ activeStep });
   };
 
-  configureSteps = (images) => {
-    return _.forEach(images, (item, idx) => {
-      return {
-        name: item.name,
-        src: item.src,
-        step: idx + 1,
-        stepLabel: '',
-      };
-    });
-  };
-
   render() {
     const {
       classes, images, maxWidth, theme,
     } = this.props;
     const { activeStep } = this.state;
-    const tutorialSteps = this.configureSteps(images);
+    const tutorialSteps = images;
     const maxSteps = tutorialSteps.length;
 
     return (
       <div className={classes.root} style={{ maxWidth }}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{tutorialSteps[activeStep].name}</Typography>
+          <Typography>{`${tutorialSteps[activeStep].step}) ${tutorialSteps[activeStep].stepLabel}`}</Typography>
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -94,7 +82,7 @@ class MobileStepperContainer extends React.Component {
           {tutorialSteps.map((step, index) => (
             <div key={step.name}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.src} alt={step.name} />
+                <img className={classes.img} src={step.src} alt={step.stepLabel} />
               ) : null}
             </div>
           ))}
