@@ -17,6 +17,9 @@ const styles = {
     width: '100%',
     backgroundColor: '#f5f5f5',
   },
+  icon: {
+    color: '#05d0f3',
+  },
 };
 
 class LabelBottomNavigation extends React.Component {
@@ -34,10 +37,10 @@ class LabelBottomNavigation extends React.Component {
 
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction label="" value="home" icon={<BrushIcon />} />
-        <BottomNavigationAction label="" value="search" icon={<SearchIcon />} />
-        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon />} />
-        <BottomNavigationAction label="" value="folder" icon={<HelpIcon />} />
+        <BottomNavigationAction label="" value="home" icon={<BrushIcon className={classes.icon} />} />
+        <BottomNavigationAction label="" value="search" icon={<SearchIcon className={classes.icon} />} />
+        <BottomNavigationAction label="" value="gallery" icon={<CollectionsIcon className={classes.icon} />} />
+        <BottomNavigationAction label="" value="folder" icon={<HelpIcon className={classes.icon} />} />
       </BottomNavigation>
     );
   }

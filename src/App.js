@@ -15,9 +15,6 @@ import deviceActionCreators from './redux/actions/device/deviceActionCreators';
 
 const styles = {
   appContainer: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
   },
 };
 
@@ -43,15 +40,14 @@ class App extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.appContainer}>
+      <React.Fragment>
         <PrimarySearchAppBar />
         <Router />
         <CustomizedSnackbars />
         <ConnectedSpinnerContainer />
         <LabelBottomNavigation />
-      </div>
+      </React.Fragment>
     );
   }
 }

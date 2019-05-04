@@ -26,6 +26,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    height: '44px',
   },
   definitions: {
     textAlign: 'center',
@@ -37,18 +38,13 @@ const styles = theme => ({
     textDecoration: 'none',
   },
   title: {
-    display: 'none',
-    fontFamily: 'Snell Roundhand Script',
+    color: '#000',
     [theme.breakpoints.up('xs')]: {
       display: 'block',
     },
   },
-  titleMobile: {
-    display: 'none',
-    [theme.breakpoints.down('sm')]: {
-      display: 'block',
-    },
-    paddingRight: '1.5rem',
+  toolbar: {
+    minHeight: '48px',
   },
 });
 
@@ -91,8 +87,8 @@ class PrimarySearchAppBar extends React.Component {
           position="fixed"
           className={classes.appBar}
         >
-          <Toolbar>
-            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h4" color="inherit" noWrap>
+          <Toolbar className={classes.toolbar}>
+            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h5" color="inherit" noWrap>
               {'Nuvo Pastiche'}
             </Link>
             <div className={classes.grow} />
