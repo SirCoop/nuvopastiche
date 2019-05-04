@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import fp from 'lodash/fp';
 import {
@@ -19,6 +18,7 @@ const styles = {
     position: 'fixed',
     width: '100%',
     backgroundColor: '#f5f5f5',
+    zIndex: '2',
   },
   activeNav: {
     color: '#01c2ff',

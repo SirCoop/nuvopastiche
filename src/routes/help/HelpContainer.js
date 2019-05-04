@@ -19,6 +19,7 @@ const styles = () => ({
   root: {
   },
   definitions: {
+    marginTop: '1rem',
     margin: '.5rem',
   },
   disclaimer: {
