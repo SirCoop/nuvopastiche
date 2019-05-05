@@ -6,9 +6,9 @@ const theme = createMuiTheme({
     useNextVariants: true,
   },
   overrides: {
-    MuiAppBar: {
-      root: {
-        boxShadow: 'rgba(0, 0, 0, 0.06) 0px 2px 4px 0px',
+    MuiAppBar: { // Name of the component / style sheet
+      root: { // Name of the rule
+        boxShadow: 'rgba(0, 0, 0, 0.06) 0px 2px 4px 0px', // CSS
       },
     },
   },

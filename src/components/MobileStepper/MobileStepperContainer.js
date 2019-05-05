@@ -31,6 +31,9 @@ const styles = theme => ({
     overflow: 'hidden',
     width: '100%',
   },
+  dotActive: {
+    backgroundColor: '#01c2ff',
+  },
 });
 
 class MobileStepperContainer extends React.Component {
@@ -94,6 +97,7 @@ class MobileStepperContainer extends React.Component {
           ))}
         </AutoPlaySwipeableViews>
         <MobileStepper
+          classes={{ dotActive: classes.dotActive }}
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
