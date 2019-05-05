@@ -25,6 +25,9 @@ const styles = theme => ({
     marginTop: '1rem',
     fontSize: '1rem',
   },
+  guideUnlocked: {
+    color: '#01c2ff',
+  },
   textField: {
     width: '90%',
     marginLeft: theme.spacing.unit,
@@ -79,6 +82,10 @@ class Form extends React.Component {
       styleImageData,
       startAthena,
     } = this.props;
+
+    const personalFileUploadDisable = (!formValid || savedPersonalImage);
+    const artFileUploadDisable = (!formValid || !savedPersonalImage || (savedPersonalImage && savedArtImage));
+
     return (
       <form className={classes.form}>
         <Grid container spacing={16} className={classes.gridContainer}>
@@ -133,12 +140,12 @@ class Form extends React.Component {
               className={classes.actionBtnGroup}
             >
               <Grid item xs={12}>
-                <div className={classes.guide}>
+                <div className={personalFileUploadDisable ? classes.guide : classes.guideUnlocked}>
                   <span>Personal Photo</span>
                 </div>
               </Grid>
               <FileUploader
-                disable={!formValid || savedPersonalImage}
+                disable={personalFileUploadDisable}
                 filesLimit={1}
                 handleUploadSubmit={this.handlePersonalImageSave}
               />
@@ -160,12 +167,12 @@ class Form extends React.Component {
               className={classes.actionBtnGroup}
             >
               <Grid item xs={12}>
-                <div className={classes.guide}>
+                <div className={artFileUploadDisable ? classes.guide : classes.guideUnlocked}>
                   <span>Artistic Reference</span>
                 </div>
               </Grid>
               <FileUploader
-                disable={!formValid || !savedPersonalImage || (savedPersonalImage && savedArtImage)}
+                disable={artFileUploadDisable}
                 filesLimit={1}
                 handleUploadSubmit={this.handleArtImageSave}
               />
@@ -194,7 +201,7 @@ class Form extends React.Component {
                   onChange={handleSliderInput}
                   min={1}
                   max={100}
-                  disabled={!formValid || !savedArtImage || (savedPersonalImage && savedArtImage)}
+                  disabled={!formValid || !savedPersonalImage || !savedArtImage || disableStart}
                 />
                 {/* Intensity */}
               </Grid>

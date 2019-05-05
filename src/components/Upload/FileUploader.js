@@ -1,13 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DropzoneDialog } from 'material-ui-dropzone';
-import Button from '@material-ui/core/Button';
+import {
+  Button,
+  withStyles,
+} from '@material-ui/core';
+
+const styles = () => ({
+  root: {
+  },
+  '@keyframes shadow-pulse': {
+    '0%': {
+      boxShadow: '0 0 0 0px rgba(0, 0, 0, 0.2)',
+    },
+    '100%': {
+      boxShadow: '0 0 0 4px rgba(0, 0, 0, 0)',
+    },
+  },
+  addButton: {
+    animation: 'shadow-pulse 1s infinite',
+  },
+});
 
 class FileUploader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      files: [],
     };
   }
 
@@ -23,7 +42,6 @@ class FileUploader extends React.Component {
 
       // Saving files to state for further use and closing Modal.
       this.setState({
-        files,
         open: false,
       });
     };
@@ -35,14 +53,15 @@ class FileUploader extends React.Component {
     };
 
     render() {
-      const { disable, filesLimit } = this.props;
+      const { classes, disable, filesLimit } = this.props;
+      const { open } = this.state;
       return (
         <div>
-          <Button onClick={this.handleOpen} disabled={disable}>
+          <Button onClick={this.handleOpen} disabled={disable} className={disable ? '' : classes.addButton}>
             {'Add Image'}
           </Button>
           <DropzoneDialog
-            open={this.state.open}
+            open={open}
             onSave={this.handleSave}
             acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
             showPreviews
@@ -55,4 +74,18 @@ class FileUploader extends React.Component {
     }
 }
 
-export default FileUploader;
+FileUploader.defaultProps = {
+  classes: PropTypes.shape({}).isRequired,
+  disable: PropTypes.bool.isRequired,
+  filesLimit: PropTypes.number.isRequired,
+  handleUploadSubmit: PropTypes.func.isRequired,
+};
+
+FileUploader.propTypes = {
+  classes: PropTypes.shape({}),
+  disable: PropTypes.bool,
+  filesLimit: PropTypes.number,
+  handleUploadSubmit: PropTypes.func,
+};
+
+export default withStyles(styles)(FileUploader);
