@@ -38,7 +38,6 @@ class HomeContainer extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <React.Fragment>
         <Grid container className={classes.root}>

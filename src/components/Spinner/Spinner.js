@@ -16,7 +16,7 @@ const NPSpinner = () => {
         css={override}
         sizeUnit="px"
         size={40}
-        color="#fff"
+        color="#b9eeff"
         activateSpinner
       />
     </div>
