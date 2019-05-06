@@ -141,7 +141,7 @@ class Form extends React.Component {
             >
               <Grid item xs={12}>
                 <div className={personalFileUploadDisable ? classes.guide : classes.guideUnlocked}>
-                  <span>Personal Photo</span>
+                  <span>Personal</span>
                 </div>
               </Grid>
               <FileUploader
@@ -168,7 +168,7 @@ class Form extends React.Component {
             >
               <Grid item xs={12}>
                 <div className={artFileUploadDisable ? classes.guide : classes.guideUnlocked}>
-                  <span>Artistic Reference</span>
+                  <span>Style</span>
                 </div>
               </Grid>
               <FileUploader
