@@ -18,7 +18,7 @@ const styles = () => ({
     },
   },
   addButton: {
-    animation: 'shadow-pulse 1s infinite',
+    // animation: 'shadow-pulse 1s infinite',
   },
 });
 

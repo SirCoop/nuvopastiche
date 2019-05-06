@@ -83,8 +83,8 @@ class Form extends React.Component {
       startAthena,
     } = this.props;
 
-    const personalFileUploadDisable = (!formValid || savedPersonalImage);
-    const artFileUploadDisable = (!formValid || !savedPersonalImage || (savedPersonalImage && savedArtImage));
+    const personalFileUploadDisable = (!formValid || disableStart);
+    const artFileUploadDisable = (!formValid || !savedPersonalImage || disableStart);
 
     return (
       <form className={classes.form}>
