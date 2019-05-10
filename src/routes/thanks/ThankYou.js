@@ -25,6 +25,9 @@ const styles = () => ({
   paragraph: {
     marginBottom: '.5rem',
   },
+  thanks: {
+    color: '#01c2ff',
+  },
 });
 
 class ThankYou extends React.Component {
@@ -46,9 +49,9 @@ class ThankYou extends React.Component {
     return (
       <React.Fragment>
         <Grid container className={classes.root}>
-          <Grid item xs={1} />
-          <Grid item xs={10} className={classes.message}>
-            <Typography variant="h3" align="center">
+          <Grid item xs={1} sm={4} />
+          <Grid item xs={10} sm={4} className={classes.message}>
+            <Typography variant="h3" align="center" className={classes.thanks}>
               {'Thank You!'}
             </Typography>
             <Typography variant="subtitle1" align="center">
@@ -69,7 +72,7 @@ class ThankYou extends React.Component {
               <b>We need you for that!</b>
             </Typography>
           </Grid>
-          <Grid item xs={1} />
+          <Grid item xs={1} sm={4} />
         </Grid>
       </React.Fragment>
     );
