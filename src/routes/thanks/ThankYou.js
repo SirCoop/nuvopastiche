@@ -69,7 +69,7 @@ class ThankYou extends React.Component {
             </Typography>
             <Typography variant="body2" align="left">
               {'For this reason, we like to say Athena has style, but not taste.'}
-              <b>We need you for that!</b>
+              <b>&nbsp;We need you for that!</b>
             </Typography>
           </Grid>
           <Grid item xs={1} sm={4} />
