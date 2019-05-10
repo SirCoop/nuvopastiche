@@ -161,12 +161,12 @@ class FormContainer extends React.Component {
     athenaService.startAthenaJob(jobInfo)
       .then(() => {
         toggleSpinner(false);
-        notify({
-          message: 'Your pastiche will be emailed upon completion.',
-          variant: 'success',
-          duration: 4000,
-        });
-        this.setState({ disableStart: true });
+        // notify({
+        //   message: 'Your pastiche will be emailed upon completion.',
+        //   variant: 'success',
+        //   duration: 4000,
+        // });
+        this.setState({ disableStart: true }, () => this.goToRoute('/thanks'));
       })
       .catch((error) => {
         toggleSpinner(false);
@@ -206,6 +206,11 @@ class FormContainer extends React.Component {
     });
   };
 
+  goToRoute = (route) => {
+    const { history } = this.props;
+    history.push(route);
+  };
+
   render() {
     const {
       disableStart,
@@ -242,11 +247,13 @@ class FormContainer extends React.Component {
 
 FormContainer.defaultProps = {
   classes: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
   toggleSpinner: PropTypes.func.isRequired,
 };
 
 FormContainer.propTypes = {
   classes: PropTypes.shape({}),
+  history: PropTypes.shape({}),
   toggleSpinner: PropTypes.func,
 };
 

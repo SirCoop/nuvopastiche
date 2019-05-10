@@ -10,9 +10,7 @@ import {
   Toolbar,
   withStyles,
 } from '@material-ui/core';
-import ConnectedDialogContainer from '../Dialog/DialogContainer';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
-import ConnectedHelpContainer from '../Help';
 
 const styles = theme => ({
   root: {
@@ -70,16 +68,6 @@ class PrimarySearchAppBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-    const dialogContent = {
-      cancelButton: '',
-      confirmButton: {
-        text: 'Got it!',
-      },
-      contentText: '',
-      dialogContent: <ConnectedHelpContainer />,
-      title: 'How does it work?',
-    };
-
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -94,7 +82,6 @@ class PrimarySearchAppBar extends React.Component {
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>
-        <ConnectedDialogContainer content={dialogContent} />
       </div>
     );
   }

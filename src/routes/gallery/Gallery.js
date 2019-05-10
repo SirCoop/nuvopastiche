@@ -8,7 +8,6 @@ import {
   Grid,
   withStyles,
 } from '@material-ui/core';
-import notify from '../../components/Snackbar/notify';
 import spinnerActionCreators from '../../redux/actions/spinner/spinnerActionCreators';
 import ConnectedForceLayoutContainer from '../../components/D3/ForceLayoutContainer';
 

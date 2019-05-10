@@ -6,6 +6,7 @@ import home from './home';
 import gallery from './gallery';
 import contact from './contact';
 import help from './help';
+import thanks from './thanks';
 
 const styles = {
   contentContainer: {
@@ -27,6 +28,7 @@ const RouterComponent = (props) => {
         <Route path={gallery.path} component={gallery.Component} />
         <Route path={contact.path} component={contact.Component} />
         <Route path={help.path} component={help.Component} />
+        <Route path={thanks.path} component={thanks.Component} />
         <Redirect from="/" to="/home" />
       </Switch>
     </div>
