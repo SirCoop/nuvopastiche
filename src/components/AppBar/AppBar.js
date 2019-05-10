@@ -8,6 +8,7 @@ import {
   CssBaseline,
   Link,
   Toolbar,
+  Typography,
   withStyles,
 } from '@material-ui/core';
 import dialogActionCreators from '../../redux/actions/dialog/dialogActionCreators';
@@ -24,25 +25,26 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    height: '44px',
   },
-  definitions: {
+  heading: {
+    // color: '#01c2ff',
+  },
+  subheading: {
+    fontSize: '14px',
+    margin: '0px',
     textAlign: 'center',
-  },
-  headerInfo: {
-    marginTop: '.5rem',
   },
   navigationLink: {
     textDecoration: 'none',
   },
   title: {
-    color: '#000',
+    // color: '#000',
+    color: '#01c2ff',
     [theme.breakpoints.up('xs')]: {
       display: 'block',
     },
   },
   toolbar: {
-    minHeight: '48px',
   },
 });
 
@@ -76,10 +78,12 @@ class PrimarySearchAppBar extends React.Component {
           className={classes.appBar}
         >
           <Toolbar className={classes.toolbar}>
-            <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h6" color="inherit" noWrap>
-              {'Nuvo Pastiche'}
-            </Link>
-            <div className={classes.grow} />
+            <Typography variant="h6" align="center" className={classes.heading}>
+              <Link component={RouterLink} to="/" className={classes.title} underline="none" variant="h6" color="inherit" noWrap>
+                {'Nuvo Pastiche'}
+              </Link>
+              <p className={classes.subheading}>Creative Artifical Intelligence</p>
+            </Typography>
           </Toolbar>
         </AppBar>
       </div>
